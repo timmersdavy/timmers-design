@@ -51,7 +51,7 @@ In contact.html, replace YOUR_FORM_ID with your actual Formspree form ID.
 
 ## 📞 Contact
 
-Email: timmersdavy@gmail.com
+Email: info@timmersdesign.be
 Location: Belgium
 
 Built with HTML5, CSS3, and Vanilla JavaScript.
