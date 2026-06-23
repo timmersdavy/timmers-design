@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>WK 2026 Live — Officieel WK Portal</title>
+<meta name="description" content="Live scores, standen en alles over de Rode Duivels. Alle tijden Belgisch (CEST). Officiële sponsor: DaDenk."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="WK 2026 Live — Scores &amp; Standen"/>
+<meta property="og:description" content="Live scores, standen en alles over de Rode Duivels. Alle tijden Belgisch (CEST). Officiële sponsor: DaDenk."/>
+<meta property="og:image" content="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&q=80"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:url" content="https://wk2026-belgie.netlify.app"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="WK 2026 Live — Scores &amp; Standen"/>
+<meta name="twitter:description" content="Live scores, standen en alles over de Rode Duivels. Alle tijden Belgisch (CEST). Officiële sponsor: DaDenk."/>
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&q=80"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#060b18;--navy2:#0b1225;--navy3:#111d35;--navy4:#182444;
+  --blue:#0057e7;--blue2:#1a6aff;
+  --gold:#f8c400;
+  --red:#e5002b;--grn:#00c853;
+  --w:#fff;
+  --dadenk:#C8972A;
+  --r:8px;--r2:12px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--w);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden;line-height:1.5}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--navy)}
+::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:3px}
+
+/* ═══ TOP BAR ═══ */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:500;height:48px;background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 clamp(12px,3vw,32px);gap:0}
+.tb-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:4px;color:var(--w);margin-right:24px;flex-shrink:0;display:flex;align-items:center;gap:10px}
+.tb-badge{background:var(--blue);padding:3px 10px;border-radius:4px;font-size:14px;letter-spacing:6px}
+.tb-sub{font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.45);font-weight:600}
+.tb-nav{list-style:none;display:flex;flex:1;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+.tb-nav::-webkit-scrollbar{display:none}
+.tb-nav a{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);padding:0 12px;height:48px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap}
+.tb-nav a:hover,.tb-nav a.on{color:#fff;border-bottom-color:var(--blue2)}
+.tb-live{display:flex;align-items:center;gap:7px;background:rgba(229,0,43,.1);border:1px solid rgba(229,0,43,.25);border-radius:4px;padding:4px 10px;font-size:10px;font-weight:800;letter-spacing:2px;color:var(--red);flex-shrink:0;margin-left:auto}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
+@media(max-width:700px){.tb-nav{display:none}}
+
+/* ═══ TICKER ═══ */
+.ticker{background:var(--blue);height:30px;display:flex;align-items:center;overflow:hidden;margin-top:48px;position:relative;z-index:10}
+.tk-lbl{background:rgba(0,0,0,.25);padding:0 14px;height:100%;display:flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:2px;white-space:nowrap;flex-shrink:0}
+.tk-sc{overflow:hidden;flex:1}
+.tk-inner{display:flex;white-space:nowrap;animation:scroll 70s linear infinite}
+.tk-inner span{padding:0 28px;font-size:11px;font-weight:600}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ═══ HERO ═══ */
+.hero{position:relative;height:88vh;min-height:520px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(0deg,var(--navy) 0%,rgba(6,11,24,.82) 30%,rgba(6,11,24,.35) 65%,rgba(6,11,24,.1) 100%)}
+.hero-scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none}
+.hero-c{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(14px,3.5vw,40px) 56px}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.eyebrow::before{content:'';width:18px;height:1px;background:var(--blue2)}
+.hero-h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(70px,14vw,180px);font-weight:900;line-height:.88;letter-spacing:-1px;margin-bottom:10px}
+.hero-h1 em{font-style:normal;color:var(--blue2)}
+.hero-h1 s{text-decoration:none;color:var(--gold)}
+.hero-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:12px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.5px;margin-bottom:24px}
+.hero-meta strong{color:#fff;font-weight:700}
+
+/* TV SCORE WIDGET */
+.tv-widget{background:rgba(6,11,24,.94);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden;min-width:360px;box-shadow:0 8px 48px rgba(0,0,0,.5);display:inline-block}
+.tvw-hdr{background:var(--blue);padding:7px 16px;display:flex;align-items:center;justify-content:space-between;font-size:10px;font-weight:800;letter-spacing:2px}
+.tvw-body{display:grid;grid-template-columns:1fr 84px 1fr;align-items:center;padding:14px 12px;gap:4px}
+.tvw-t{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;font-weight:700;text-align:center}
+.tvw-t img{width:40px;height:29px;object-fit:cover;border-radius:3px;border:1px solid rgba(255,255,255,.1)}
+.tvw-sc{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;text-align:center;color:var(--gold);letter-spacing:2px;line-height:1}
+.tvw-time{font-size:10px;color:rgba(255,255,255,.4);text-align:center;margin-top:4px;font-weight:600}
+.tvw-ft{padding:7px 14px;border-top:1px solid rgba(255,255,255,.05);font-size:10px;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:4px}
+@media(max-width:500px){.tv-widget{min-width:unset;width:100%}}
+
+/* COUNTDOWN */
+.cd-row{display:flex;align-items:flex-start;gap:8px;margin-top:18px;flex-wrap:wrap}
+.cd-u{text-align:center;min-width:58px}
+.cd-n{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,5vw,48px);font-weight:900;color:#fff;line-height:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:7px 10px;display:block}
+.cd-l{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:5px}
+.cd-sep{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:rgba(255,255,255,.18);padding-top:8px}
+.cd-cap{font-size:11px;color:rgba(255,255,255,.35);margin-top:8px;font-weight:500}
+
+/* ═══ STATS BAR ═══ */
+.sbar{background:var(--navy2);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.sbar-in{max-width:1200px;margin:0 auto;padding:0 clamp(14px,3.5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr))}
+.si{padding:16px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.04)}
+.si:last-child{border-right:none}
+.si-n{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;line-height:1}
+.si-l{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:3px}
+.si.hi .si-n{color:var(--blue2)}
+
+/* ═══ LAYOUT ═══ */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(14px,3.5vw,40px)}
+.sec{padding:60px 0}
+.sh{margin-bottom:30px}
+.sh-eye{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue2);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.sh-eye::before{content:'';width:12px;height:2px;background:var(--blue2)}
+.sh-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(26px,4vw,42px);font-weight:800;letter-spacing:.3px;line-height:1.05}
+.divider{height:1px;background:rgba(255,255,255,.05)}
+
+/* ═══ TV SCORECARDS ═══ */
+.sc-list{display:grid;gap:5px}
+.sc-card{background:var(--navy2);border:1px solid rgba(255,255,255,.06);border-radius:var(--r2);overflow:hidden;transition:border-color .2s}
+.sc-card:hover{border-color:rgba(255,255,255,.14)}
+.sc-card.live{border-color:rgba(229,0,43,.35);background:rgba(229,0,43,.02)}
+.sc-card.bel{border-color:rgba(0,87,231,.4);background:rgba(0,87,231,.025)}
+.sc-card.flash{animation:flash .7s ease}
+@keyframes flash{50%{background:rgba(0,200,83,.1);border-color:var(--grn)}}
+.sc-hdr{display:flex;align-items:center;justify-content:space-between;padding:6px 14px;background:rgba(0,0,0,.18);font-size:10px;font-weight:700;letter-spacing:.5px;color:rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.04)}
+.live-pill{display:flex;align-items:center;gap:5px;background:rgba(229,0,43,.12);border:1px solid rgba(229,0,43,.25);border-radius:20px;padding:2px 9px;font-size:9px;font-weight:800;letter-spacing:1.5px;color:var(--red)}
+.bel-pill{background:rgba(0,87,231,.18);border:1px solid rgba(0,87,231,.35);border-radius:3px;padding:2px 7px;font-size:9px;font-weight:800;letter-spacing:1px;color:var(--blue2)}
+.sc-body{display:grid;grid-template-columns:1fr 100px 1fr;align-items:center;padding:12px 16px;gap:6px}
+.sc-team{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px}
+.sc-team.right{flex-direction:row-reverse;text-align:right}
+.sc-team img{width:34px;height:24px;object-fit:cover;border-radius:3px;border:1px solid rgba(255,255,255,.08);flex-shrink:0}
+.sc-cen{text-align:center}
+.sc-score{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;letter-spacing:3px;line-height:1}
+.sc-score.goal{color:var(--grn);animation:goalpop .4s ease}
+@keyframes goalpop{0%{transform:scale(1.4)}100%{transform:scale(1)}}
+.sc-time{font-size:11px;color:rgba(255,255,255,.35);font-weight:600;margin-top:3px}
+.sc-sched{font-size:13px;color:rgba(255,255,255,.3);font-weight:500;text-align:center}
+.sc-goals{display:flex;justify-content:space-between;gap:14px;padding:0 16px 10px;font-size:11px;color:rgba(255,255,255,.5);line-height:1.8;font-weight:600}
+.sc-goals>div{flex:1}
+.sc-goals .ga{text-align:right}
+.sc-venue{padding:5px 14px;font-size:10px;color:rgba(255,255,255,.22);border-top:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:4px}
+.sc-watch{padding:6px 14px 8px;display:flex;gap:8px;flex-wrap:wrap}
+.watch-live-btn{background:#e30613;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:4px;text-decoration:none;letter-spacing:.5px;animation:pulse-red 1.2s infinite}
+.watch-soon-btn{background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);font-size:11px;padding:3px 9px;border-radius:4px;text-decoration:none;border:1px solid rgba(255,255,255,.1)}
+.watch-soon-btn:hover{background:rgba(255,255,255,.13);color:#fff}
+@keyframes pulse-red{0%,100%{opacity:1}50%{opacity:.7}}
+
+/* ═══ RODE DUIVELS ═══ */
+.bel-hdr{background:url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=1200&q=75') center 40%/cover no-repeat;border-radius:var(--r2) var(--r2) 0 0;position:relative;padding:28px 26px 22px;overflow:hidden}
+.bel-hdr::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.92) 0%,rgba(10,20,40,.8) 100%)}
+.bel-hdr-c{position:relative;z-index:1}
+.bel-flag{display:flex;height:4px;width:36px;border-radius:2px;overflow:hidden;margin-bottom:12px}
+.bel-flag span{flex:1}
+.bel-flag span:nth-child(1){background:#1a1a1a}
+.bel-flag span:nth-child(2){background:#FDDA24}
+.bel-flag span:nth-child(3){background:#EF3340}
+.bel-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(26px,5vw,44px);font-weight:900;letter-spacing:2px}
+.bel-sub{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(248,196,0,.75);margin-top:2px}
+.bm-grid{background:var(--navy3);border:1px solid rgba(255,255,255,.06);border-top:none;border-radius:0 0 var(--r2) var(--r2);overflow:hidden}
+.bm{display:grid;grid-template-columns:1fr 80px 1fr 188px;gap:8px;align-items:center;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s}
+.bm:last-child{border-bottom:none}
+.bm:hover{background:rgba(255,255,255,.02)}
+.bm.nx{border-left:3px solid var(--blue2)}
+.bm-s{display:flex;align-items:center;gap:9px;font-weight:700;font-size:13px}
+.bm-s.r{flex-direction:row-reverse;text-align:right}
+.bm-s img{width:26px;height:18px;object-fit:cover;border-radius:2px;border:1px solid rgba(255,255,255,.08);flex-shrink:0}
+.bm-sc{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--gold);text-align:center;letter-spacing:2px}
+.bm-info{font-size:11px;color:rgba(255,255,255,.35);line-height:1.8;text-align:right}
+.nx-tag{display:inline-block;background:var(--blue2);color:#fff;font-size:8px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:3px;margin-bottom:3px;text-transform:uppercase}
+@media(max-width:640px){.bm{grid-template-columns:1fr 60px 1fr;grid-template-rows:auto auto}.bm-info{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.04);padding-top:8px;margin-top:4px;text-align:left}}
+
+/* ═══ GROEPEN ═══ */
+.gr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(264px,1fr));gap:10px}
+.gr-card{background:var(--navy2);border:1px solid rgba(255,255,255,.06);border-radius:var(--r2);overflow:hidden;transition:border-color .2s,transform .15s}
+.gr-card:hover{border-color:rgba(255,255,255,.14);transform:translateY(-2px)}
+.gr-card.bel{border-color:rgba(0,87,231,.3)}
+.gr-hdr{background:var(--navy3);padding:9px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.05)}
+.gr-ltr{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:1px}
+.gr-badge{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.gr-badge.bel{color:var(--blue2)}
+.gr-card table{width:100%;border-collapse:collapse}
+.gr-card th{padding:6px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.04)}
+.gr-card th:not(:first-child){text-align:center}
+.gr-card td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.03);font-size:12px;color:rgba(255,255,255,.55)}
+.gr-card td:not(:first-child){text-align:center;font-size:11px}
+.gr-card tr:last-child td{border-bottom:none}
+.pts{font-weight:700!important;color:#fff!important;font-size:13px!important}
+.tc{display:flex;align-items:center;gap:8px;font-weight:500;color:#fff}
+.tc img{width:20px;height:14px;object-fit:cover;border-radius:2px;border:1px solid rgba(255,255,255,.08);flex-shrink:0}
+.brow td{color:#fff!important;font-weight:600!important}
+.q1 td:first-child{border-left:2px solid var(--grn)}
+.q2 td:first-child{border-left:2px solid rgba(0,200,83,.28)}
+
+/* ═══ SPONSOR DADENK ═══ */
+.spon-wrap{background:linear-gradient(135deg,var(--navy2) 0%,var(--navy3) 50%,var(--navy2) 100%);border:1px solid rgba(200,151,42,.18);border-radius:16px;overflow:hidden}
+.spon-hdr{background:linear-gradient(90deg,rgba(200,151,42,.12),rgba(200,151,42,.04));border-bottom:1px solid rgba(200,151,42,.14);padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+.spon-name{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;letter-spacing:2px;color:var(--dadenk)}
+.spon-badge{background:var(--dadenk);color:#000;padding:4px 12px;border-radius:4px;font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.spon-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;padding:24px 22px}
+@media(max-width:700px){.spon-body{grid-template-columns:1fr}}
+
+/* PITCH */
+.pitch-outer{position:relative}
+.led{background:#0e0e0e;border:2px solid #1a1a1a;padding:5px 0;overflow:hidden;font-size:12px;font-weight:800;letter-spacing:2px;display:flex;align-items:center}
+.led.top{border-radius:4px 4px 0 0;margin-bottom:-2px;color:var(--dadenk)}
+.led.bot{border-radius:0 0 4px 4px;margin-top:-2px;color:var(--dadenk)}
+.led-s{white-space:nowrap;animation:leds 18s linear infinite;display:inline-block}
+.led-s2{animation-direction:reverse;animation-duration:22s}
+@keyframes leds{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.pitch-inner{position:relative;padding:0 14px}
+.pitch-side{position:absolute;top:0;bottom:0;width:14px;background:#0e0e0e;border:2px solid #1a1a1a;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pitch-side.l{left:0;border-radius:4px 0 0 4px}
+.pitch-side.r{right:0;border-radius:0 4px 4px 0}
+.pitch-side .ledv{writing-mode:vertical-rl;font-size:9px;font-weight:800;letter-spacing:2px;color:var(--dadenk);white-space:nowrap;animation:ledv 20s linear infinite}
+@keyframes ledv{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+
+/* JERSEY */
+.jersey-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.jersey-cap{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px;text-align:center}
+.jersey-note{font-size:11px;color:rgba(255,255,255,.3);margin-top:10px;text-align:center}
+
+/* SPON STATS */
+.ss-list{display:flex;flex-direction:column;gap:8px;justify-content:center}
+.ss-r{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(200,151,42,.08);border-radius:6px}
+.ss-k{font-size:11px;color:rgba(255,255,255,.45);font-weight:500}
+.ss-v{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--dadenk)}
+.spon-quote{margin-top:10px;padding:12px;background:rgba(200,151,42,.04);border:1px solid rgba(200,151,42,.14);border-radius:7px;font-size:12px;color:var(--dadenk);text-align:center;font-style:italic;font-weight:600}
+
+/* ═══ STADIONS ═══ */
+.st-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(305px,1fr));gap:12px}
+.st-card{background:var(--navy2);border:1px solid rgba(255,255,255,.06);border-radius:var(--r2);overflow:hidden;transition:transform .2s,box-shadow .2s;position:relative}
+.st-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.st-img-w{height:175px;overflow:hidden;position:relative}
+.st-img{width:100%;height:100%;object-fit:cover;transition:transform .3s;display:block}
+.st-card:hover .st-img{transform:scale(1.04)}
+.sold-out{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:10px;font-weight:900;letter-spacing:2px;padding:3px 9px;border-radius:4px;transform:rotate(-2deg);box-shadow:0 2px 8px rgba(229,0,43,.5)}
+.st-land{position:absolute;top:10px;right:10px;font-size:19px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.st-body{padding:13px 15px}
+.st-city{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue2);margin-bottom:3px}
+.st-name{font-size:15px;font-weight:800;margin-bottom:7px;line-height:1.2}
+.st-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:7px}
+.st-fact{font-size:11px;color:rgba(255,255,255,.35)}
+.st-fact strong{color:rgba(255,255,255,.7);font-weight:600}
+.st-matches{font-size:11px;color:rgba(255,255,255,.3);border-top:1px solid rgba(255,255,255,.04);padding-top:7px;line-height:1.7}
+.finale-b{display:inline-flex;align-items:center;gap:4px;background:rgba(248,196,0,.08);border:1px solid rgba(248,196,0,.25);color:var(--gold);font-size:9px;font-weight:800;letter-spacing:1px;padding:2px 8px;border-radius:3px;margin-bottom:5px}
+.dadenk-b{font-size:10px;color:var(--dadenk);border-top:1px solid rgba(200,151,42,.08);padding-top:6px;margin-top:6px;font-weight:600}
+
+/* ═══ BRACKET ═══ */
+.br-sc{overflow-x:auto;padding-bottom:8px}
+.br-wr{display:flex;gap:8px;min-width:860px;align-items:stretch}
+.br-col{flex:1;display:flex;flex-direction:column;gap:8px}
+.br-title{background:var(--navy3);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:8px 10px;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center}
+.br-m{background:var(--navy2);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:9px 11px;flex:1;display:flex;flex-direction:column;justify-content:center;min-height:54px}
+.br-t{font-size:11px;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:6px;padding:3px 0}
+.br-t img{width:16px;height:11px;object-fit:cover;border-radius:1px}
+.br-hr{border:none;border-top:1px solid rgba(255,255,255,.04);margin:3px 0}
+.br-fin{border-color:rgba(248,196,0,.25);background:rgba(248,196,0,.025)}
+.br-trophy{flex:0 0 88px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+
+/* ═══ TOPSCORERS ═══ */
+.sc-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:8px}
+.scorer{background:var(--navy2);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:11px 15px;display:flex;align-items:center;gap:11px;transition:border-color .15s}
+.scorer:hover{border-color:rgba(255,255,255,.14)}
+.s-rk{font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;color:rgba(255,255,255,.1);min-width:26px;text-align:center;line-height:1}
+.s-rk.g1{color:#f8c400}.s-rk.g2{color:#9e9e9e}.s-rk.g3{color:#cd7f32}
+.s-info{flex:1;min-width:0}
+.s-name{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s-nat{font-size:11px;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:5px;margin-top:2px}
+.s-nat img{width:18px;height:13px;object-fit:cover;border-radius:2px;border:1px solid rgba(255,255,255,.08)}
+.s-goals{text-align:right}
+.s-num{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;line-height:1}
+.s-lbl{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.2)}
+
+/* ═══ ANNOUNCER ═══ */
+.ann{position:fixed;bottom:20px;right:20px;z-index:800;max-width:310px;background:rgba(6,11,24,.97);backdrop-filter:blur(20px);border:1px solid rgba(0,87,231,.28);border-radius:12px;padding:15px 16px;transform:translateX(120%) scale(.9);transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s;opacity:0;box-shadow:0 12px 48px rgba(0,0,0,.7)}
+.ann.show{transform:translateX(0) scale(1);opacity:1}
+.ann-hdr{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.ann-mic{width:34px;height:34px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ann-lbl{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--blue2)}
+.ann-sub{font-size:9px;color:rgba(255,255,255,.3);margin-top:1px}
+.ann-txt{font-size:13px;font-weight:600;color:#fff;line-height:1.5}
+.ann-close{position:absolute;top:8px;right:10px;background:none;border:none;color:rgba(255,255,255,.28);font-size:15px;line-height:1;cursor:pointer}
+.ann-close:hover{color:rgba(255,255,255,.6)}
+
+/* REFRESH */
+.rfbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:9px 13px;background:rgba(255,255,255,.025);border-radius:7px;margin-top:9px;font-size:11px;color:rgba(255,255,255,.3)}
+.rf-btn{background:rgba(0,87,231,.12);border:1px solid rgba(0,87,231,.25);color:var(--blue2);padding:4px 13px;border-radius:5px;font-size:11px;font-weight:700;letter-spacing:.5px;cursor:pointer;transition:background .15s}
+.rf-btn:hover{background:rgba(0,87,231,.28)}
+
+/* FILTER */
+.filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.fb{background:var(--navy2);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:5px 13px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.35);cursor:pointer;transition:all .15s}
+.fb:hover,.fb.on{background:rgba(0,87,231,.12);border-color:rgba(0,87,231,.35);color:var(--blue2)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}
+.rv.on{opacity:1;transform:none}
+
+footer{text-align:center;padding:28px;border-top:1px solid rgba(255,255,255,.04);font-size:11px;color:rgba(255,255,255,.18)}
+footer a{color:var(--dadenk)}
+section[id]{scroll-margin-top:82px}
+html{scroll-padding-top:82px}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCER POPUP -->
+<div class="ann" id="ann">
+  <button class="ann-close" onclick="sluitAnn()">✕</button>
+  <div class="ann-hdr">
+    <div class="ann-mic">🎙️</div>
+    <div><div class="ann-lbl">Stadium Omroeper</div><div class="ann-sub">Live aankondiging</div></div>
+  </div>
+  <div class="ann-txt" id="ann-txt">Welkom in het WK 2026!</div>
+</div>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="tb-logo"><span class="tb-badge">WK</span><span class="tb-sub">2026 LIVE</span></div>
+  <ul class="tb-nav" id="tb-nav">
+    <li><a href="#live">Scores</a></li>
+    <li><a href="#belgie">Rode Duivels</a></li>
+    <li><a href="#groepen">Groepen</a></li>
+    <li><a href="#sponsor">DaDenk</a></li>
+    <li><a href="#stadions">Stadions</a></li>
+    <li><a href="#schema">Schema</a></li>
+    <li><a href="#scorers">Topscorers</a></li>
+  </ul>
+  <div class="tb-live" id="tb-live" style="display:none"><span class="pulse"></span> LIVE</div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tk-lbl">⚡ BREAKING</div>
+  <div class="tk-sc"><div class="tk-inner" id="tk-inner"></div></div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1800&q=80" alt="WK 2026" loading="eager"/></div>
+  <div class="hero-ov"></div>
+  <div class="hero-scan"></div>
+  <div class="hero-c">
+    <div class="eyebrow">Canada · Mexico · Verenigde Staten · 11 juni – 19 juli 2026</div>
+    <h1 class="hero-h1">WERELD<br/><em>KAMPIOEN</em><br/><span style="color:var(--gold)">SCHAP</span></h1>
+    <div class="hero-meta">
+      <strong>48 teams</strong><span>·</span>
+      <strong>104 wedstrijden</strong><span>·</span>
+      <strong>16 stadions</strong><span>·</span>
+      <span>Alle tijden CEST (UTC+2)</span>
+    </div>
+
+    <!-- LIVE NU banner (gevuld door verwerkLive zodra er matchen bezig zijn) -->
+    <div id="hero-live" style="display:none;margin:16px 0 4px;padding:12px 16px;background:rgba(8,8,8,.72);border:1px solid rgba(200,151,42,.55);border-radius:12px;backdrop-filter:blur(6px);flex-direction:column;gap:10px"></div>
+
+    <!-- VOLGENDE WK MATCH widget -->
+    <div class="tv-widget">
+      <div class="tvw-hdr">
+        <div style="display:flex;align-items:center;gap:6px">⚽ VOLGENDE WK MATCH</div>
+        <div id="wk-grp"></div>
+      </div>
+      <div class="tvw-body" id="wk-widget-body">
+        <div class="tvw-t" id="wk-home"><span>—</span></div>
+        <div><div class="tvw-sc">–</div><div class="tvw-time" id="wk-widget-time">laden…</div></div>
+        <div class="tvw-t" id="wk-away"><span>—</span></div>
+      </div>
+      <div class="tvw-ft" id="wk-venue">📍 —</div>
+      <div style="padding:6px 14px;border-top:1px solid rgba(255,255,255,.05);display:flex;gap:6px;justify-content:center">
+        <div class="cd-u" style="min-width:40px"><span class="cd-n" style="font-size:22px;padding:4px 6px" id="wk-d">--</span><div class="cd-l">Dagen</div></div>
+        <div class="cd-sep" style="font-size:22px;padding-top:4px">:</div>
+        <div class="cd-u" style="min-width:40px"><span class="cd-n" style="font-size:22px;padding:4px 6px" id="wk-h">--</span><div class="cd-l">Uren</div></div>
+        <div class="cd-sep" style="font-size:22px;padding-top:4px">:</div>
+        <div class="cd-u" style="min-width:40px"><span class="cd-n" style="font-size:22px;padding:4px 6px" id="wk-m">--</span><div class="cd-l">Min</div></div>
+        <div class="cd-sep" style="font-size:22px;padding-top:4px">:</div>
+        <div class="cd-u" style="min-width:40px"><span class="cd-n" style="font-size:22px;padding:4px 6px" id="wk-s">--</span><div class="cd-l">Sec</div></div>
+      </div>
+      <div style="padding:6px 14px 10px;border-top:1px solid rgba(255,255,255,.05);text-align:center">
+        <a href="#belgie" onclick="setTimeout(function(){filterS('bel',document.querySelector('.fb:nth-child(2)'))},100)" style="display:inline-flex;align-items:center;gap:6px;background:rgba(0,87,231,.15);border:1px solid rgba(0,87,231,.35);color:var(--blue2);font-size:11px;font-weight:800;letter-spacing:1px;padding:5px 14px;border-radius:5px;text-decoration:none">🇧🇪 Rode Duivels schema →</a>
+      </div>
+    </div>
+
+    <!-- Volgende Rode Duivels match -->
+    <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:6px;display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:#FDDA24;display:inline-block"></span>VOLGENDE RODE DUIVELS</div>
+    <div class="cd-row">
+      <div class="cd-u"><span class="cd-n" id="cd-d">--</span><div class="cd-l">Dagen</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-u"><span class="cd-n" id="cd-h">--</span><div class="cd-l">Uren</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-u"><span class="cd-n" id="cd-m">--</span><div class="cd-l">Min</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-u"><span class="cd-n" id="cd-s">--</span><div class="cd-l">Sec</div></div>
+    </div>
+    <div class="cd-cap" id="cd-cap">🇧🇪 België vs 🇮🇷 Iran · 21 juni · 21:00 CEST · SoFi Stadium, Los Angeles</div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="sbar">
+  <div class="sbar-in">
+    <div class="si hi"><div class="si-n" id="sb-live">–</div><div class="si-l">Live nu</div></div>
+    <div class="si"><div class="si-n" id="sb-played">–</div><div class="si-l">Gespeeld</div></div>
+    <div class="si"><div class="si-n" id="sb-goals">–</div><div class="si-l">Goals</div></div>
+    <div class="si"><div class="si-n">48</div><div class="si-l">Teams</div></div>
+    <div class="si"><div class="si-n">104</div><div class="si-l">Wedstrijden</div></div>
+    <div class="si"><div class="si-n">16</div><div class="si-l">Stadions</div></div>
+    <div class="si"><div class="si-n">3</div><div class="si-l">Landen</div></div>
+      </div>
+</div>
+
+<div class="wrap">
+
+<!-- LIVE SCORES -->
+<section class="sec" id="live">
+  <div class="sh rv">
+    <div class="sh-eye"><span class="pulse"></span> Live &amp; recent</div>
+    <div class="sh-h">Wedstrijdscores</div>
+  </div>
+  <div class="sc-list rv" id="sc-grid"><div style="padding:20px;color:rgba(255,255,255,.3);font-size:13px">Live scores laden…</div></div>
+  <div class="rfbar rv">
+    <div id="rftxt">Verbinden met live data…</div>
+    <div style="display:flex;align-items:center;gap:10px">Vernieuwen over: <strong id="rfcd" style="font-variant-numeric:tabular-nums">30</strong>s
+    <button class="rf-btn" onclick="laadNu()">↺ Nu vernieuwen</button></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RODE DUIVELS -->
+<section class="sec" id="belgie">
+  <div class="sh rv">
+    <div class="sh-eye">Groep G · Alle tijden Belgisch (CEST)</div>
+    <div class="sh-h">🇧🇪 Rode Duivels</div>
+  </div>
+  <div class="rv">
+    <div class="bel-hdr">
+      <div class="bel-hdr-c">
+        <div class="bel-flag"><span></span><span></span><span></span></div>
+        <div class="bel-title">RODE DUIVELS</div>
+        <div class="bel-sub">WK 2026 · Groep G · Gesponsord door DaDenk</div>
+      </div>
+    </div>
+    <div class="bm-grid">
+      <div class="bm">
+        <div class="bm-s"><img src="https://flagcdn.com/32x24/be.png" alt=""/>België</div>
+        <div class="bm-sc">1 – 1</div>
+        <div class="bm-s r">Egypte<img src="https://flagcdn.com/32x24/eg.png" alt=""/></div>
+        <div class="bm-info">FT · ma 15 juni · 21:00 CEST<br/>Lumen Field · Seattle</div>
+      </div>
+      <div class="bm nx">
+        <div class="bm-s"><img src="https://flagcdn.com/32x24/be.png" alt=""/>België</div>
+        <div class="bm-sc">–</div>
+        <div class="bm-s r">Iran<img src="https://flagcdn.com/32x24/ir.png" alt=""/></div>
+        <div class="bm-info"><div class="nx-tag">Volgende match</div><br/>zo 21 juni · 21:00 CEST<br/>SoFi Stadium · Los Angeles</div>
+      </div>
+      <div class="bm">
+        <div class="bm-s"><img src="https://flagcdn.com/32x24/be.png" alt=""/>België</div>
+        <div class="bm-sc">–</div>
+        <div class="bm-s r">Nieuw-Zeeland<img src="https://flagcdn.com/32x24/nz.png" alt=""/></div>
+        <div class="bm-info">za 27 juni · 05:00 CEST<br/>BC Place · Vancouver</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GROEPEN -->
+<section class="sec" id="groepen">
+  <div class="sh rv">
+    <div class="sh-eye">Live standen · automatisch bijgewerkt</div>
+    <div class="sh-h">Alle 12 Groepen</div>
+  </div>
+  <div class="gr-grid rv" id="gr-grid"></div>
+  <div id="gr-note" style="font-size:10px;color:rgba(255,255,255,.18);margin-top:10px;text-align:right"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DADENK SPONSOR -->
+<section class="sec" id="sponsor">
+  <div class="sh rv">
+    <div class="sh-eye">Officiële WK 2026 Sponsor</div>
+    <div class="sh-h">DaDenk · Op het veld. Op de truitjes. Overal.</div>
+  </div>
+  <div class="spon-wrap rv">
+    <div class="spon-hdr">
+      <div class="spon-name">DaDenk</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="font-size:11px;color:rgba(255,255,255,.35)">"Vlaanderen denkt na."</div>
+        <div class="spon-badge">Officiële Sponsor</div>
+      </div>
+    </div>
+    <div class="spon-body">
+
+      <!-- PITCH -->
+      <div class="pitch-outer">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:8px;text-align:center">LED Boarding · Alle 16 Stadions</div>
+        <div class="led top">
+          <div class="led-s">⚡ DaDenk ⚡ WK 2026 ⚡ Vlaanderen denkt na. ⚡ Officiële Sponsor ⚡ dadenk.be ⚡&nbsp;&nbsp;&nbsp;&nbsp;⚡ DaDenk ⚡ WK 2026 ⚡ Vlaanderen denkt na. ⚡ Officiële Sponsor ⚡ dadenk.be ⚡&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+        <div class="pitch-inner">
+          <div class="pitch-side l"><div class="ledv">DaDenk · WK 2026 · DaDenk · WK 2026 · DaDenk · WK 2026 ·&nbsp;&nbsp;</div></div>
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;background:#2a7d3b;border:2px solid #1a1a1a">
+            <!-- gemaaide grasbanen (verhoudingen echt veld 105x68m) -->
+            <rect width="300" height="200" fill="#2a7d3b"/>
+            <rect x="0" y="0" width="37.5" height="200" fill="#2f8a42"/>
+            <rect x="75" y="0" width="37.5" height="200" fill="#2f8a42"/>
+            <rect x="150" y="0" width="37.5" height="200" fill="#2f8a42"/>
+            <rect x="225" y="0" width="37.5" height="200" fill="#2f8a42"/>
+            <!-- zijlijnen en middenlijn -->
+            <rect x="6" y="6" width="288" height="188" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>
+            <line x1="150" y1="6" x2="150" y2="194" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>
+            <!-- middencirkel + aftrappunt -->
+            <circle cx="150" cy="100" r="26" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>
+            <circle cx="150" cy="100" r="2" fill="rgba(255,255,255,.85)"/>
+            <!-- strafschopgebied links (16m) + doelgebied (5m) + stip + boog -->
+            <rect x="6" y="45" width="47" height="110" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>
+            <rect x="6" y="75" width="16" height="50" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>
+            <circle cx="37" cy="100" r="1.8" fill="rgba(255,255,255,.85)"/>
+            <path d="M 53 79.5 A 26 26 0 0 1 53 120.5" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>
+            <!-- strafschopgebied rechts -->
+            <rect x="247" y="45" width="47" height="110" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>
+            <rect x="278" y="75" width="16" height="50" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>
+            <circle cx="263" cy="100" r="1.8" fill="rgba(255,255,255,.85)"/>
+            <path d="M 247 120.5 A 26 26 0 0 1 247 79.5" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>
+            <!-- hoekschopbogen -->
+            <path d="M 6 12 A 6 6 0 0 0 12 6" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+            <path d="M 288 6 A 6 6 0 0 0 294 12" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+            <path d="M 294 188 A 6 6 0 0 0 288 194" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+            <path d="M 12 194 A 6 6 0 0 0 6 188" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+            <!-- doelen -->
+            <rect x="2" y="90" width="4" height="20" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1"/>
+            <rect x="294" y="90" width="4" height="20" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1"/>
+            <!-- sponsor in middenrondje -->
+            <text x="150" y="88" text-anchor="middle" font-family="Arial" font-size="11" font-weight="900" fill="rgba(255,255,255,.30)" letter-spacing="4">DaDenk</text>
+            <text x="150" y="101" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,255,255,.20)" letter-spacing="2">OFFICIËLE SPONSOR</text>
+            <text x="150" y="113" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,255,255,.18)">WK 2026</text>
+          </svg>
+          <div class="pitch-side r"><div class="ledv">WK 2026 · DaDenk · WK 2026 · DaDenk · WK 2026 · DaDenk ·&nbsp;&nbsp;</div></div>
+        </div>
+        <div class="led bot">
+          <div class="led-s led-s2">⭐ DaDenk ⭐ Jij denkt er ook zo over ⭐ WK 2026 ⭐ Rode Duivels ⭐ DaDenk ⭐ Jij denkt er ook zo over ⭐ WK 2026 ⭐ Rode Duivels ⭐&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+      </div>
+
+      <!-- JERSEY -->
+      <div class="jersey-wrap">
+        <div class="jersey-cap">Officieel Shirtsponsor · Rode Duivels</div>
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" style="max-width:140px;display:block;margin:0 auto">
+          <path d="M40,30 L10,60 L35,75 L35,190 L165,190 L165,75 L190,60 L160,30 L140,45 C130,55 110,62 100,62 C90,62 70,55 60,45 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+          <clipPath id="jc"><path d="M40,30 L10,60 L35,75 L35,190 L165,190 L165,75 L190,60 L160,30 L140,45 C130,55 110,62 100,62 C90,62 70,55 60,45 Z"/></clipPath>
+          <rect x="35" y="0" width="43" height="220" fill="#111" clip-path="url(#jc)"/>
+          <rect x="78" y="0" width="44" height="220" fill="#FDDA24" clip-path="url(#jc)"/>
+          <rect x="122" y="0" width="43" height="220" fill="#EF3340" clip-path="url(#jc)"/>
+          <ellipse cx="100" cy="44" rx="22" ry="14" fill="none" stroke="#444" stroke-width="1.5"/>
+          <rect x="63" y="105" width="74" height="25" rx="4" fill="rgba(200,151,42,.12)" stroke="rgba(200,151,42,.45)" stroke-width="1"/>
+          <text x="100" y="123" text-anchor="middle" font-family="Arial" font-size="13" font-weight="900" fill="#C8972A" letter-spacing="2">DaDenk</text>
+          <text x="100" y="171" text-anchor="middle" font-family="Arial" font-size="26" font-weight="900" fill="rgba(255,255,255,.1)">10</text>
+        </svg>
+        <div class="jersey-note">Rode Duivels · WK 2026<br/><span style="color:var(--dadenk)">DaDenk</span> Shirtsponsor</div>
+      </div>
+
+      <!-- STATS -->
+      <div class="ss-list">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:4px">DaDenk WK Stats</div>
+        <div class="ss-r"><div class="ss-k">Boarding impressies</div><div class="ss-v">5.2M</div></div>
+        <div class="ss-r"><div class="ss-k">Stadions met branding</div><div class="ss-v">16</div></div>
+        <div class="ss-r"><div class="ss-k">Gesponsorde matches</div><div class="ss-v">104</div></div>
+        <div class="ss-r"><div class="ss-k">Rode Duivels matches</div><div class="ss-v">3+</div></div>
+        <div class="ss-r"><div class="ss-k">Live LED seconden</div><div class="ss-v">∞</div></div>
+        <div class="spon-quote">"Vlaanderen denkt na."</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.2);text-align:center;margin-top:6px">* Projectie gebaseerd op 16 stadions · 104 wedstrijden</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STADIONS -->
+<section class="sec" id="stadions">
+  <div class="sh rv">
+    <div class="sh-eye">Alle 16 speellocaties · 100% uitverkocht</div>
+    <div class="sh-h">Stadions WK 2026</div>
+  </div>
+  <div class="st-grid rv" id="st-grid"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SCHEMA -->
+<section class="sec" id="schema">
+  <div class="sh rv">
+    <div class="sh-eye">Volledig speelschema · Belgische tijden (CEST)</div>
+    <div class="sh-h">Speelschema</div>
+  </div>
+  <div class="filter-row rv">
+    <button class="fb on" onclick="filterS('all',this)">Alle wedstrijden</button>
+    <button class="fb" onclick="filterS('bel',this)">🇧🇪 Rode Duivels</button>
+    <button class="fb" onclick="filterS('live',this)">⚡ Live</button>
+    <button class="fb" onclick="filterS('today',this)">📅 Vandaag</button>
+  </div>
+  <div class="sc-list rv" id="schema-grid"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BRACKET -->
+<section class="sec" id="bracket">
+  <div class="sh rv">
+    <div class="sh-eye">Knock-out fase · vanaf 1 juli 2026</div>
+    <div class="sh-h">Knock-out fases</div>
+  </div>
+  <div class="br-sc rv"><div class="br-wr" id="br-wr"></div></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOPSCORERS -->
+<section class="sec" id="scorers">
+  <div class="sh rv">
+    <div class="sh-eye">Meeste goals · live bijgewerkt</div>
+    <div class="sh-h">Topscorers</div>
+  </div>
+  <div class="sc-g rv" id="scorers-list"></div>
+</section>
+
+</div>
+
+<footer>
+  WK 2026 Live Portal · Data via ESPN Sports API · Alle tijden CEST (UTC+2) ·
+  Officiële sponsor: <a href="https://dadenk-hub.netlify.app">DaDenk</a> ·
+  <a href="https://dadenk-hub.netlify.app">← DaDenk Hub</a>
+</footer>
+
+<script>
+function p(n){return n<10?'0'+n:''+n}
+function fl(c,w,h){w=w||24;h=h||17;return'<img src="https://flagcdn.com/'+w+'x'+h+'/'+c+'.png" loading="lazy" onerror="this.style.display=\'none\'" style="width:'+w+'px;height:'+h+'px;object-fit:cover;border-radius:2px;border:1px solid rgba(255,255,255,.08);flex-shrink:0">'}
+function bt(iso){try{return new Date(iso).toLocaleTimeString('nl-BE',{timeZone:'Europe/Brussels',hour:'2-digit',minute:'2-digit'});}catch(e){return '';}}
+function bd(iso){try{return new Date(iso).toLocaleDateString('nl-BE',{timeZone:'Europe/Brussels',weekday:'short',day:'numeric',month:'short'});}catch(e){return '';}}
+function isToday(iso){try{var a=new Date(iso),b=new Date();return a.toLocaleDateString('nl-BE',{timeZone:'Europe/Brussels'})===b.toLocaleDateString('nl-BE',{timeZone:'Europe/Brussels'});}catch(e){return false;}}
+var FC={'belgium':'be','egypt':'eg','iran':'ir','new zealand':'nz','mexico':'mx','south korea':'kr','korea republic':'kr','south africa':'za','czechia':'cz','czech republic':'cz','canada':'ca','switzerland':'ch','qatar':'qa','brazil':'br','morocco':'ma','scotland':'gb-sct','haiti':'ht','united states':'us','usa':'us','paraguay':'py','australia':'au','turkey':'tr','germany':'de',"côte d'ivoire":'ci','ivory coast':'ci','ecuador':'ec','netherlands':'nl','japan':'jp','sweden':'se','tunisia':'tn','spain':'es','cape verde':'cv','saudi arabia':'sa','uruguay':'uy','france':'fr','senegal':'sn','iraq':'iq','norway':'no','argentina':'ar','algeria':'dz','austria':'at','jordan':'jo','portugal':'pt','dr congo':'cd','democratic republic of congo':'cd','uzbekistan':'uz','colombia':'co','england':'gb-eng','croatia':'hr','ghana':'gh','panama':'pa','nigeria':'ng','poland':'pl','curacao':'cw','curaçao':'cw','bosnia-herzegovina':'ba','bosnia and herzegovina':'ba','bosnië-herzegovina':'ba'};
+function fc(n){return FC[(n||'').toLowerCase().trim()]||'un';}
+
+// COUNTDOWN RODE DUIVELS
+var BM=[
+  {dt:new Date('2026-06-15T19:00:00Z'),c:'🇧🇪 België vs 🇪🇬 Egypte · ma 15 juni · 21:00 CEST · Lumen Field, Seattle'},
+  {dt:new Date('2026-06-21T19:00:00Z'),c:'🇧🇪 België vs 🇮🇷 Iran · zo 21 juni · 21:00 CEST · SoFi Stadium, Los Angeles'},
+  {dt:new Date('2026-06-27T03:00:00Z'),c:'🇧🇪 België vs 🇳🇿 Nieuw-Zeeland · za 27 juni · 05:00 CEST · BC Place, Vancouver'},
+];
+(function tick(){
+  var now=new Date(),nx=BM.find(function(m){return m.dt>now;});
+  if(!nx)return;
+  document.getElementById('cd-cap').textContent=nx.c;
+  var d=nx.dt-now;
+  document.getElementById('cd-d').textContent=p(Math.floor(d/864e5));
+  document.getElementById('cd-h').textContent=p(Math.floor(d%864e5/36e5));
+  document.getElementById('cd-m').textContent=p(Math.floor(d%36e5/6e4));
+  document.getElementById('cd-s').textContent=p(Math.floor(d%6e4/1e3));
+  setTimeout(tick,1000);
+})();
+
+// ANNOUNCER
+var ANNS=[
+  'Dames en heren — WELKOM in het WK 2026! Alle 16 stadions zijn UITVERKOCHT!',
+  '🎙️ Het WK 2026 is officieel begonnen! Estadio Azteca geeft het startschot!',
+  '🇧🇪 De Rode Duivels zijn er! Groep G — op weg naar de titel!',
+  '🏆 De finale op 19 juli: MetLife Stadium, New York — 82.500 mensen, allemaal aanwezig!',
+  '📣 Gesponsord door DaDenk — Vlaanderen denkt na.',
+  '⚽ Volgende Rode Duivels: België vs Iran · 21 juni · 21:00 Belgische tijd!',
+  '📊 Live standen worden elke 30 seconden bijgewerkt. Mis niets!',
+];
+var annI=0;
+function toonAnn(txt){
+  var el=document.getElementById('ann');
+  document.getElementById('ann-txt').textContent=txt||ANNS[annI%ANNS.length];
+  annI++;
+  el.classList.add('show');
+  setTimeout(function(){el.classList.remove('show');},7000);
+}
+function sluitAnn(){document.getElementById('ann').classList.remove('show');}
+
+// LIVE DATA ENGINE
+var prevS={};var rfT=30;var rfI;
+// Auto-update: openstaande tabs herladen zichzelf wanneer er een nieuwe versie gedeployd is
+(function(){
+  var et=null;
+  setInterval(function(){
+    fetch('/',{method:'HEAD',cache:'no-store'}).then(function(r){
+      var e=r.headers.get('etag');
+      if(e&&et&&e!==et){location.reload();}
+      if(e&&!et){et=e;}
+    }).catch(function(){});
+  },5*60*1000);
+})();
+function laadNu(){
+  clearInterval(rfI);rfT=30;document.getElementById('rfcd').textContent=rfT;
+  laadLive();
+  rfI=setInterval(function(){rfT--;var e=document.getElementById('rfcd');if(e)e.textContent=rfT;if(rfT<=0){rfT=30;laadLive();}},1000);
+}
+function laadLive(){
+  document.getElementById('rftxt').textContent='Verbinden…';
+  Promise.all([
+    fetch('https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=120').then(function(r){return r.json();}).catch(function(){return null;}),
+    fetch('https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard').then(function(r){return r.json();}).catch(function(){return null;})
+  ]).then(function(res){
+    // neem de respons met de meeste wedstrijden (volledig toernooi i.p.v. enkel vandaag)
+    var data=res.filter(function(r){return r&&r.events&&r.events.length;}).sort(function(a,b){return b.events.length-a.events.length;})[0];
+    if(data){verwerkLive(data.events);laadStanden();laadScorers();}
+    else{renderS('all');bouwGr();toonScorers(null,false);document.getElementById('rftxt').textContent='Offline — statisch schema getoond (ESPN API niet bereikbaar)';}
+  });
+}
+// Doelpuntenmakers uit ESPN-details, gesplitst per team (thuis links, uit rechts)
+function goalsHtml(comp,home,away){
+  var det=comp.details||[];if(!det.length)return'';
+  var hId=''+(((home||{}).team||{}).id||(home||{}).id||'');
+  var h=[],a=[];
+  det.forEach(function(d){
+    var tt=((d.type||{}).text||'');
+    var isGoal=!!d.scoringPlay;
+    var isRed=d.redCard===true||/red card/i.test(tt);
+    var isYel=!isRed&&(d.yellowCard===true||/yellow card/i.test(tt));
+    if(!isGoal&&!isYel&&!isRed)return;
+    var sp=(d.athletesInvolved&&d.athletesInvolved[0])||{};
+    var nm=sp.shortName||sp.displayName||'?';
+    var min=((d.clock||{}).displayValue||'').replace(/'/g,'′');
+    var ico=isGoal?'⚽':(isRed?'🟥':'🟨');
+    var isPen=d.penaltyKick===true||/penalt/i.test(tt);
+    var tag=isGoal?(d.ownGoal?' (OG)':(isPen?' (pen.)':'')):'';
+    var line=ico+' '+nm+' '+min+tag;
+    if(''+((d.team||{}).id)===hId){h.push(line);}else{a.push(line);}
+  });
+  if(!h.length&&!a.length)return'';
+  return '<div class="sc-goals"><div>'+h.join('<br/>')+'</div><div class="ga">'+a.join('<br/>')+'</div></div>';
+}
+function verwerkLive(evs){
+  var g=document.getElementById('sc-grid');
+  // Live matchen eerst, dan gepland, dan afgelopen
+  function lvRank(ev){var c=(ev.competitions||[])[0]||{};var st=((c.status||{}).type||{}).state;var s=Date.now()-new Date(ev.date);var L=st==='in'||(st==='pre'&&s>0&&s<135*60*1000);return L?0:(st==='post'?2:1);}
+  evs=evs.slice().sort(function(a,b){return lvRank(a)-lvRank(b)||new Date(a.date)-new Date(b.date);});
+  var goals=0,live=0,played=0,html='',heroLive=[];
+  evs.forEach(function(ev){
+    var comp=(ev.competitions||[])[0];if(!comp)return;
+    var teams=comp.competitors||[];
+    var home=teams.find(function(t){return t.homeAway==='home';})||{};
+    var away=teams.find(function(t){return t.homeAway==='away';})||{};
+    var stype=((comp.status||{}).type||{});
+    var ko=new Date(ev.date),sinds=Date.now()-ko;
+    var isD=stype.state==='post';
+    // ESPN meldt soms nog 'pre' terwijl de aftrap al geweest is — toon dan toch LIVE
+    var isL=stype.state==='in'||(stype.state==='pre'&&sinds>0&&sinds<135*60*1000);
+    var hN=(home.team||{}).displayName||'?',aN=(away.team||{}).displayName||'?';
+    var hS=home.score!=null?''+home.score:'',aS=away.score!=null?''+away.score:'';
+    var key=ev.id||hN+aN;
+    var chg=prevS[key]&&prevS[key]!==(hS+'-'+aS);
+    if(chg){toonAnn('⚽ GOAL! '+hN+' '+hS+' – '+aS+' '+aN+'!');}
+    prevS[key]=hS+'-'+aS;
+    var isBel=hN.toLowerCase().includes('belg')||aN.toLowerCase().includes('belg');
+    if(isD){played++;goals+=(parseInt(hS)||0)+(parseInt(aS)||0);}
+    if(isL){live++;goals+=(parseInt(hS)||0)+(parseInt(aS)||0);}
+    var venue=((comp.venue||{}).fullName)||'';
+    var grpN='';(ev.classifications||[]).forEach(function(c){if(c.conference)grpN=c.conference.name||'';});
+    var clock=(comp.status||{}).displayClock||'';
+    if(isL&&stype.state!=='in'){clock=''+Math.min(Math.floor(sinds/6e4),120);}
+    if(isL){heroLive.push('<a href="#live" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:15px;font-weight:700;flex-wrap:wrap"><span class="live-pill"><span class="pulse"></span> LIVE '+clock+'\'</span>'+fl(fc(hN),24,17)+'<span>'+hN+'</span><span style="color:var(--dadenk);font-size:18px">'+(hS||'0')+' – '+(aS||'0')+'</span><span>'+aN+'</span>'+fl(fc(aN),24,17)+'</a>');}
+    html+='<div class="sc-card'+(isL?' live':'')+(isBel?' bel':'')+(chg?' flash':'')+'">'
+      +'<div class="sc-hdr"><div>'+(isL?'<span class="live-pill"><span class="pulse"></span> LIVE '+clock+'\'</span>':isD?'Afgelopen':bd(ev.date)+' · '+bt(ev.date)+' CEST')+'</div>'
+      +'<div style="display:flex;align-items:center;gap:6px">'+(isBel?'<span class="bel-pill">🇧🇪 BEL</span>':'')+grpN+'</div></div>'
+      +'<div class="sc-body">'
+      +'<div class="sc-team">'+fl(fc(hN),32,23)+'<span>'+hN+'</span></div>'
+      +'<div class="sc-cen">'
+      +(isL||isD?'<div class="sc-score'+(chg?' goal':'')+'">'+hS+' – '+aS+'</div><div class="sc-time">'+(isL?'⏱ '+clock+'\'':'FT')+'</div>':'<div class="sc-sched">'+bt(ev.date)+' CEST<br/><span style="font-size:11px;opacity:.7">'+bd(ev.date)+'</span></div>')
+      +'</div>'
+      +'<div class="sc-team right"><span>'+aN+'</span>'+fl(fc(aN),32,23)+'</div>'
+      +'</div>'
+      +((isL||isD)?goalsHtml(comp,home,away):'')
+      +(venue?'<div class="sc-venue">📍 '+venue+' &nbsp;·&nbsp; <span style="color:var(--dadenk);font-weight:700">DaDenk</span></div>':'')
+      +'<div class="sc-watch">'
+      +(isL?'<a href="https://www.sporza.be/nl/live/" target="_blank" class="watch-live-btn">📺 LIVE kijken op Sporza</a>':isD?'<a href="https://www.sporza.be/nl/voetbal/wk-2026/" target="_blank" class="watch-soon-btn">📺 Samenvatting op Sporza</a>':'<a href="https://www.sporza.be/nl/live/" target="_blank" class="watch-soon-btn">📺 Sporza</a> &nbsp; <a href="https://vtmgo.be/vtm-go/live" target="_blank" class="watch-soon-btn">📺 VTM GO</a>')
+      +'</div>'
+      +'</div>';
+  });
+  if(html)g.innerHTML=html;else renderS('all');
+  var hlEl=document.getElementById('hero-live');
+  if(hlEl){if(heroLive.length){hlEl.style.display='flex';hlEl.innerHTML='<div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dadenk)">⚽ NU BEZIG</div>'+heroLive.join('');}else{hlEl.style.display='none';}}
+  document.getElementById('sb-goals').textContent=goals;
+  document.getElementById('sb-live').textContent=live;
+  document.getElementById('sb-played').textContent=played;
+  var tlb=document.getElementById('tb-live');if(tlb)tlb.style.display=live>0?'flex':'none';
+  document.getElementById('rftxt').textContent='Bijgewerkt '+new Date().toLocaleTimeString('nl-BE',{timeZone:'Europe/Brussels'});
+  espnEvs=evs;renderS(activeF);
+}
+
+// GROEPEN
+var GR=[
+  {l:'A',t:[{n:'Mexico',c:'mx',sp:1,w:1,d:0,l:0,pts:3},{n:'Zuid-Korea',c:'kr',sp:1,w:1,d:0,l:0,pts:3},{n:'Tsjechië',c:'cz',sp:1,w:0,d:0,l:1,pts:0},{n:'Zuid-Afrika',c:'za',sp:1,w:0,d:0,l:1,pts:0}]},
+  {l:'B',t:[{n:'Bosnië-Herzegovina',c:'ba',sp:1,w:0,d:1,l:0,pts:1},{n:'Canada',c:'ca',sp:1,w:0,d:1,l:0,pts:1},{n:'Qatar',c:'qa',sp:1,w:0,d:1,l:0,pts:1},{n:'Zwitserland',c:'ch',sp:1,w:0,d:1,l:0,pts:1}]},
+  {l:'C',t:[{n:'Schotland',c:'gb-sct',sp:1,w:1,d:0,l:0,pts:3},{n:'Brazilië',c:'br',sp:1,w:0,d:1,l:0,pts:1},{n:'Marokko',c:'ma',sp:1,w:0,d:1,l:0,pts:1},{n:'Haïti',c:'ht',sp:1,w:0,d:0,l:1,pts:0}]},
+  {l:'D',t:[{n:'USA',c:'us',sp:1,w:1,d:0,l:0,pts:3},{n:'Australië',c:'au',sp:1,w:1,d:0,l:0,pts:3},{n:'Turkije',c:'tr',sp:1,w:0,d:0,l:1,pts:0},{n:'Paraguay',c:'py',sp:1,w:0,d:0,l:1,pts:0}]},
+  {l:'E',t:[{n:'Duitsland',c:'de',sp:1,w:1,d:0,l:0,pts:3},{n:'Ivoorkust',c:'ci',sp:1,w:1,d:0,l:0,pts:3},{n:'Ecuador',c:'ec',sp:1,w:0,d:0,l:1,pts:0},{n:'Curaçao',c:'cw',sp:1,w:0,d:0,l:1,pts:0}]},
+  {l:'F',t:[{n:'Zweden',c:'se',sp:1,w:1,d:0,l:0,pts:3},{n:'Nederland',c:'nl',sp:1,w:0,d:1,l:0,pts:1},{n:'Japan',c:'jp',sp:1,w:0,d:1,l:0,pts:1},{n:'Tunesië',c:'tn',sp:1,w:0,d:0,l:1,pts:0}]},
+  {l:'G',t:[{n:'Nieuw-Zeeland',c:'nz',sp:1,w:0,d:1,l:0,pts:1},{n:'Iran',c:'ir',sp:1,w:0,d:1,l:0,pts:1},{n:'België',c:'be',b:1,sp:1,w:0,d:1,l:0,pts:1},{n:'Egypte',c:'eg',sp:1,w:0,d:1,l:0,pts:1}]},
+  {l:'H',t:[{n:'Saoedi-Arabië',c:'sa',sp:1,w:0,d:1,l:0,pts:1},{n:'Uruguay',c:'uy',sp:1,w:0,d:1,l:0,pts:1},{n:'Kaapverdië',c:'cv',sp:1,w:0,d:1,l:0,pts:1},{n:'Spanje',c:'es',sp:1,w:0,d:1,l:0,pts:1}]},
+  {l:'I',t:[{n:'Frankrijk',c:'fr',sp:0,w:0,d:0,l:0,pts:0},{n:'Senegal',c:'sn',sp:0,w:0,d:0,l:0,pts:0},{n:'Irak',c:'iq',sp:0,w:0,d:0,l:0,pts:0},{n:'Noorwegen',c:'no',sp:0,w:0,d:0,l:0,pts:0}]},
+  {l:'J',t:[{n:'Argentinië',c:'ar',sp:0,w:0,d:0,l:0,pts:0},{n:'Algerije',c:'dz',sp:0,w:0,d:0,l:0,pts:0},{n:'Oostenrijk',c:'at',sp:0,w:0,d:0,l:0,pts:0},{n:'Jordanië',c:'jo',sp:0,w:0,d:0,l:0,pts:0}]},
+  {l:'K',t:[{n:'Portugal',c:'pt',sp:0,w:0,d:0,l:0,pts:0},{n:'DR Congo',c:'cd',sp:0,w:0,d:0,l:0,pts:0},{n:'Oezbekistan',c:'uz',sp:0,w:0,d:0,l:0,pts:0},{n:'Colombia',c:'co',sp:0,w:0,d:0,l:0,pts:0}]},
+  {l:'L',t:[{n:'Engeland',c:'gb-eng',sp:0,w:0,d:0,l:0,pts:0},{n:'Kroatië',c:'hr',sp:0,w:0,d:0,l:0,pts:0},{n:'Ghana',c:'gh',sp:0,w:0,d:0,l:0,pts:0},{n:'Panama',c:'pa',sp:0,w:0,d:0,l:0,pts:0}]},
+];
+function bouwGr(ov){
+  var g=document.getElementById('gr-grid');g.innerHTML='';
+  GR.forEach(function(gr){
+    var hB=gr.t.some(function(t){return t.b;});
+    var el=document.createElement('div');el.className='gr-card'+(hB?' bel':'');
+    var rows=gr.t.map(function(t,i){
+      var o=(ov&&ov[t.n])||{};
+      var sp=o.sp!=null?o.sp:(t.sp||0),w=o.w!=null?o.w:(t.w||0),d=o.d!=null?o.d:(t.d||0),l=o.l!=null?o.l:(t.l||0),pts=o.pts!=null?o.pts:(t.pts||0);
+      var cls=(i===0?'q1 ':(i===1?'q2 ':''))+(t.b?'brow':'');
+      return '<tr class="'+cls+'"><td><div class="tc">'+fl(t.c,20,14)+t.n+'</div></td><td>'+sp+'</td><td>'+w+'</td><td>'+d+'</td><td>'+l+'</td><td class="pts">'+pts+'</td></tr>';
+    }).join('');
+    el.innerHTML='<div class="gr-hdr"><div class="gr-ltr">Groep '+gr.l+'</div><div class="gr-badge'+(hB?' bel':'')+'">'+( hB?'🇧🇪 JOUW GROEP':'4 teams')+'</div></div>'
+      +'<table><thead><tr><th>Team</th><th>S</th><th>W</th><th>G</th><th>V</th><th>Pts</th></tr></thead><tbody>'+rows+'</tbody></table>';
+    g.appendChild(el);
+  });
+}
+function laadStanden(){
+  fetch('https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings')
+    .then(function(r){return r.json();})
+    .then(function(data){
+      var grps=data.children||data.standings||data.groups||[];
+      if(!grps.length){bouwGr();return;}
+      var g=document.getElementById('gr-grid');g.innerHTML='';
+      grps.forEach(function(grp){
+        var ltr=(grp.name||'').slice(-1).toUpperCase();
+        var entries=(grp.standings&&grp.standings.entries)||grp.entries||[];
+        entries=entries.slice().sort(function(x,y){function rk(e){var s=(e.stats||[]).find(function(t){return t.name==='rank';});return s?+s.value:99;}return rk(x)-rk(y);});
+        var hB=entries.some(function(e){return((e.team||{}).displayName||'').toLowerCase().includes('belg');});
+        var el=document.createElement('div');el.className='gr-card'+(hB?' bel':'');
+        function gs(st,ns){for(var i=0;i<ns.length;i++){var s=(st||[]).find(function(x){return x.name===ns[i]||x.abbreviation===ns[i];});if(s)return s.value||s.displayValue||0;}return 0;}
+        var rows=entries.map(function(e,i){
+          var tN=(e.team||{}).displayName||'?';var iB=tN.toLowerCase().includes('belg');
+          var st=e.stats||[];
+          var pts=gs(st,['points','pts']),sp=gs(st,['gamesPlayed','played']),w=gs(st,['wins','W']),d=gs(st,['ties','draws','D']),l=gs(st,['losses','L']);
+          var cls=(i===0?'q1 ':(i===1?'q2 ':''))+(iB?'brow':'');
+          return '<tr class="'+cls+'"><td><div class="tc">'+fl(fc(tN),20,14)+tN+'</div></td><td>'+sp+'</td><td>'+w+'</td><td>'+d+'</td><td>'+l+'</td><td class="pts">'+pts+'</td></tr>';
+        }).join('');
+        el.innerHTML='<div class="gr-hdr"><div class="gr-ltr">Groep '+ltr+'</div><div class="gr-badge'+(hB?' bel':'')+'">'+( hB?'🇧🇪 JOUW GROEP':entries.length+' teams')+'</div></div>'
+          +'<table><thead><tr><th>Team</th><th>S</th><th>W</th><th>G</th><th>V</th><th>Pts</th></tr></thead><tbody>'+rows+'</tbody></table>';
+        g.appendChild(el);
+      });
+      document.getElementById('gr-note').textContent='Live standen · bijgewerkt '+new Date().toLocaleTimeString('nl-BE',{timeZone:'Europe/Brussels'});
+    }).catch(function(){bouwGr();});
+}
+bouwGr();
+
+// STADIONS
+var STADIONS=[
+  {n:'MetLife Stadium',city:'East Rutherford · New York/NJ',land:'🇺🇸',cap:'82.500',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Metlife_stadium_%28Aerial_view%29.jpg/960px-Metlife_stadium_%28Aerial_view%29.jpg',matches:'Groepsfase · Kwartfinale · Halve finale',finale:'19 jul — 🏆 FINALE'},
+  {n:'Rose Bowl',city:'Pasadena · Los Angeles',land:'🇺🇸',cap:'88.565',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2018.06.17_Over_the_Rose_Bowl%2C_Pasadena%2C_CA_USA_0039_%2842855669451%29_%28cropped%29.jpg/960px-2018.06.17_Over_the_Rose_Bowl%2C_Pasadena%2C_CA_USA_0039_%2842855669451%29_%28cropped%29.jpg',matches:'Groepsfase · Kwartfinale · Halve finale'},
+  {n:'SoFi Stadium',city:'Inglewood · Los Angeles',land:'🇺🇸',cap:'70.240',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/SoFi_Stadium_2023.jpg/960px-SoFi_Stadium_2023.jpg',matches:'Groepsfase · 🇧🇪 België vs 🇮🇷 Iran (21 jun)',bel:1},
+  {n:"Levi's Stadium",city:'Santa Clara · San Francisco',land:'🇺🇸',cap:'68.500',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Levi%27s_Stadium_in_February_2016_prior_to_Super_Bowl_50_%2824398261729%29.jpg/960px-Levi%27s_Stadium_in_February_2016_prior_to_Super_Bowl_50_%2824398261729%29.jpg',matches:'Groepsfase · Ronde van 32 · Kwartfinale'},
+  {n:'AT&T Stadium',city:'Arlington · Dallas',land:'🇺🇸',cap:'80.000',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Arlington_June_2020_4_%28AT%26T_Stadium%29.jpg/960px-Arlington_June_2020_4_%28AT%26T_Stadium%29.jpg',matches:'Groepsfase · Ronde van 32 · Kwartfinale'},
+  {n:'NRG Stadium',city:'Houston',land:'🇺🇸',cap:'70.000',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Nrg_stadium.jpg/960px-Nrg_stadium.jpg',matches:'Groepsfase · Ronde van 32'},
+  {n:'Hard Rock Stadium',city:'Miami Gardens · Miami',land:'🇺🇸',cap:'65.000',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Hard_Rock_Stadium_for_Super_Bowl_LIV_%2849606710103%29.jpg/960px-Hard_Rock_Stadium_for_Super_Bowl_LIV_%2849606710103%29.jpg',matches:'Groepsfase · Ronde van 32 · Kwartfinale'},
+  {n:'Lincoln Financial Field',city:'Philadelphia',land:'🇺🇸',cap:'69.796',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Lincoln_Financial_Field_%28Aerial_view%29.jpg/960px-Lincoln_Financial_Field_%28Aerial_view%29.jpg',matches:'Groepsfase · Ronde van 32'},
+  {n:'Gillette Stadium',city:'Foxborough · Boston',land:'🇺🇸',cap:'65.878',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Gillette_Stadium_%28Top_View%29.jpg/960px-Gillette_Stadium_%28Top_View%29.jpg',matches:'Groepsfase · Ronde van 32'},
+  {n:'Lumen Field',city:'Seattle',land:'🇺🇸',cap:'68.740',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/2025_FIFA_Club_World_Cup_-_Seattle_Sounders_FC_vs._Atl%C3%A9tico_Madrid_-_05.jpg/960px-2025_FIFA_Club_World_Cup_-_Seattle_Sounders_FC_vs._Atl%C3%A9tico_Madrid_-_05.jpg',matches:'🇧🇪 België vs 🇪🇬 Egypte (15 jun)',bel:1},
+  {n:'Arrowhead Stadium',city:'Kansas City',land:'🇺🇸',cap:'76.416',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Aerial_view_of_Arrowhead_Stadium_08-31-2013.jpg/960px-Aerial_view_of_Arrowhead_Stadium_08-31-2013.jpg',matches:'Groepsfase · Ronde van 32 · Halve finale'},
+  {n:'BC Place',city:'Vancouver',land:'🇨🇦',cap:'54.500',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/BC_Place_2015_Women%27s_FIFA_World_Cup.jpg/960px-BC_Place_2015_Women%27s_FIFA_World_Cup.jpg',matches:'🇧🇪 België vs 🇳🇿 Nieuw-Zeeland (27 jun)',bel:1},
+  {n:'BMO Field',city:'Toronto',land:'🇨🇦',cap:'45.000',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Toronto_BMO_Field_in_2024.jpg/960px-Toronto_BMO_Field_in_2024.jpg',matches:'Groepsfase · Ronde van 32'},
+  {n:'Estadio Azteca',city:'Mexico City',land:'🇲🇽',cap:'87.523',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Vista_a%C3%A9rea_del_Estadio_Azteca_-_2026_-_02.jpg/960px-Vista_a%C3%A9rea_del_Estadio_Azteca_-_2026_-_02.jpg',matches:'Opening (11 jun) · Groepsfase · Ronde van 32'},
+  {n:'Estadio BBVA',city:'Monterrey',land:'🇲🇽',cap:'51.350',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Mexico_Guadalupe_Monterrey_Estadio_BBVA_Bancomer_fifa_world_cup_2026_6.JPG/960px-Mexico_Guadalupe_Monterrey_Estadio_BBVA_Bancomer_fifa_world_cup_2026_6.JPG',matches:'Groepsfase · Ronde van 32'},
+  {n:'Estadio Akron',city:'Guadalajara',land:'🇲🇽',cap:'49.850',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Estadio_Akron_02-07-2022_cabecera_sur_lado_derecho_%283%29.jpg/960px-Estadio_Akron_02-07-2022_cabecera_sur_lado_derecho_%283%29.jpg',matches:'Groepsfase'},
+];
+(function(){
+  var g=document.getElementById('st-grid');
+  STADIONS.forEach(function(s){
+    var el=document.createElement('div');el.className='st-card';
+    el.innerHTML='<div class="st-img-w"><img class="st-img" src="'+(s.img.indexOf('http')===0?s.img:'https://images.unsplash.com/'+s.img+'?w=600&q=75')+'" alt="'+s.n+'" loading="lazy"/>'
+      +'<div class="sold-out">UITVERKOCHT</div><div class="st-land">'+s.land+'</div></div>'
+      +'<div class="st-body">'
+      +(s.finale?'<div class="finale-b">🏆 FINALE · '+s.finale+'</div><br/>':'')
+      +'<div class="st-city">'+s.city+'</div>'
+      +'<div class="st-name">'+s.n+'</div>'
+      +'<div class="st-meta"><div class="st-fact">👥 <strong>'+s.cap+'</strong></div>'+(s.bel?'<div class="st-fact" style="color:rgba(0,87,231,.65)">🇧🇪 Rode Duivels</div>':'')+'</div>'
+      +'<div class="st-matches">'+s.matches+'</div>'
+      +'<div class="dadenk-b">📣 DaDenk Boarding · Officiële Sponsor</div>'
+      +'</div>';
+    g.appendChild(el);
+  });
+})();
+
+// SCHEMA
+var SCHEMA=[
+  {dt:'2026-06-11T19:00:00Z',h:'Mexico',hc:'mx',a:'Zuid-Afrika',ac:'za',gr:'A',stad:'Estadio Azteca',hs:2,as:0},
+  {dt:'2026-06-12T02:00:00Z',h:'Zuid-Korea',hc:'kr',a:'Tsjechië',ac:'cz',gr:'A',stad:'Estadio Akron',hs:2,as:1},
+  {dt:'2026-06-12T17:00:00Z',h:'Canada',hc:'ca',a:'Bosnië-Herz.',ac:'ba',gr:'B',stad:'BMO Field',hs:1,as:1},
+  {dt:'2026-06-12T20:00:00Z',h:'USA',hc:'us',a:'Paraguay',ac:'py',gr:'D',stad:'MetLife Stadium',hs:4,as:1},
+  {dt:'2026-06-13T17:00:00Z',h:'Haïti',hc:'ht',a:'Schotland',ac:'gb-sct',gr:'C',stad:'Hard Rock Stadium',hs:0,as:1},
+  {dt:'2026-06-13T20:00:00Z',h:'Qatar',hc:'qa',a:'Zwitserland',ac:'ch',gr:'B',stad:'Levi\'s Stadium',hs:1,as:1},
+  {dt:'2026-06-13T23:00:00Z',h:'Brazilië',hc:'br',a:'Marokko',ac:'ma',gr:'C',stad:'Rose Bowl',hs:1,as:1},
+  {dt:'2026-06-14T17:00:00Z',h:'Australië',hc:'au',a:'Turkije',ac:'tr',gr:'D',stad:'NRG Stadium',hs:2,as:0},
+  {dt:'2026-06-14T20:00:00Z',h:'Duitsland',hc:'de',a:'Curaçao',ac:'cw',gr:'E',stad:'NRG Stadium',hs:7,as:1},
+  {dt:'2026-06-14T22:00:00Z',h:'Nederland',hc:'nl',a:'Japan',ac:'jp',gr:'F',stad:'AT&T Stadium',hs:2,as:2},
+  {dt:'2026-06-15T01:00:00Z',h:'Ivoorkust',hc:'ci',a:'Ecuador',ac:'ec',gr:'E',stad:'Lincoln Financial',hs:1,as:0},
+  {dt:'2026-06-15T04:00:00Z',h:'Zweden',hc:'se',a:'Tunesië',ac:'tn',gr:'F',stad:'Estadio BBVA',hs:5,as:1},
+  {dt:'2026-06-15T17:00:00Z',h:'Spanje',hc:'es',a:'Kaapverdië',ac:'cv',gr:'H',stad:'Hard Rock Stadium',hs:0,as:0},
+  {dt:'2026-06-15T19:00:00Z',h:'België',hc:'be',a:'Egypte',ac:'eg',gr:'G',stad:'Lumen Field',bel:1,hs:1,as:1},
+  {dt:'2026-06-15T22:00:00Z',h:'Saoedi-Arabië',hc:'sa',a:'Uruguay',ac:'uy',gr:'H',stad:'Arrowhead Stadium',hs:1,as:1},
+  {dt:'2026-06-16T03:00:00Z',h:'Iran',hc:'ir',a:'Nieuw-Zeeland',ac:'nz',gr:'G',stad:'Estadio BBVA',hs:2,as:2},
+  {dt:'2026-06-16T17:00:00Z',h:'Frankrijk',hc:'fr',a:'Senegal',ac:'sn',gr:'I',stad:'MetLife Stadium'},
+  {dt:'2026-06-16T20:00:00Z',h:'Irak',hc:'iq',a:'Noorwegen',ac:'no',gr:'I',stad:"Levi's Stadium"},
+  {dt:'2026-06-16T23:00:00Z',h:'Engeland',hc:'gb-eng',a:'Kroatië',ac:'hr',gr:'L',stad:'AT&T Stadium'},
+  {dt:'2026-06-17T02:00:00Z',h:'Ghana',hc:'gh',a:'Panama',ac:'pa',gr:'L',stad:'Lincoln Financial'},
+  {dt:'2026-06-17T17:00:00Z',h:'Argentinië',hc:'ar',a:'Algerije',ac:'dz',gr:'J',stad:'Rose Bowl'},
+  {dt:'2026-06-17T20:00:00Z',h:'Oostenrijk',hc:'at',a:'Jordanië',ac:'jo',gr:'J',stad:'Gillette Stadium'},
+  {dt:'2026-06-18T17:00:00Z',h:'Portugal',hc:'pt',a:'DR Congo',ac:'cd',gr:'K',stad:'SoFi Stadium'},
+  {dt:'2026-06-18T20:00:00Z',h:'Oezbekistan',hc:'uz',a:'Colombia',ac:'co',gr:'K',stad:'Arrowhead Stadium'},
+  {dt:'2026-06-19T17:00:00Z',h:'Zweden',hc:'se',a:'Tunesië',ac:'tn',gr:'F',stad:'BC Place'},
+  {dt:'2026-06-19T20:00:00Z',h:'Tsjechië',hc:'cz',a:'Zuid-Afrika',ac:'za',gr:'A',stad:'NRG Stadium'},
+  {dt:'2026-06-22T01:00:00Z',h:'Nieuw-Zeeland',hc:'nz',a:'Egypte',ac:'eg',gr:'G',stad:'BC Place'},
+  {dt:'2026-06-20T20:00:00Z',h:'Kaapverdië',hc:'cv',a:'Uruguay',ac:'uy',gr:'H',stad:'Estadio Akron'},
+  {dt:'2026-06-21T17:00:00Z',h:'Panama',hc:'pa',a:'Engeland',ac:'gb-eng',gr:'L',stad:'BC Place'},
+  {dt:'2026-06-21T19:00:00Z',h:'België',hc:'be',a:'Iran',ac:'ir',gr:'G',stad:'SoFi Stadium',bel:1},
+  {dt:'2026-06-22T17:00:00Z',h:'Colombia',hc:'co',a:'Oezbekistan',ac:'uz',gr:'K',stad:"Levi's Stadium"},
+  {dt:'2026-06-22T20:00:00Z',h:'Senegal',hc:'sn',a:'Irak',ac:'iq',gr:'I',stad:'Arrowhead Stadium'},
+  {dt:'2026-06-23T17:00:00Z',h:'Japan',hc:'jp',a:'Zweden',ac:'se',gr:'F',stad:'MetLife Stadium'},
+  {dt:'2026-06-23T20:00:00Z',h:'Saudi-Arabië',hc:'sa',a:'Kaapverdië',ac:'cv',gr:'H',stad:'Hard Rock Stadium'},
+  {dt:'2026-06-24T17:00:00Z',h:'Mexico',hc:'mx',a:'Tsjechië',ac:'cz',gr:'A',stad:'Estadio Azteca'},
+  {dt:'2026-06-24T20:00:00Z',h:'Paraguay',hc:'py',a:'Australië',ac:'au',gr:'D',stad:'AT&T Stadium'},
+  {dt:'2026-06-25T17:00:00Z',h:'Ghana',hc:'gh',a:'Panama',ac:'pa',gr:'L',stad:'Estadio Azteca'},
+  {dt:'2026-06-25T20:00:00Z',h:'Portugal',hc:'pt',a:'DR Congo',ac:'cd',gr:'K',stad:'NRG Stadium'},
+  {dt:'2026-06-26T17:00:00Z',h:'Marokko',hc:'ma',a:'Schotland',ac:'gb-sct',gr:'C',stad:'Gillette Stadium'},
+  {dt:'2026-06-26T20:00:00Z',h:'Noorwegen',hc:'no',a:'Senegal',ac:'sn',gr:'I',stad:'Lincoln Financial'},
+  {dt:'2026-06-27T03:00:00Z',h:'België',hc:'be',a:'Nieuw-Zeeland',ac:'nz',gr:'G',stad:'BC Place',bel:1},
+  {dt:'2026-06-27T17:00:00Z',h:'Duitsland',hc:'de',a:'Ecuador',ac:'ec',gr:'E',stad:'SoFi Stadium'},
+  {dt:'2026-06-28T17:00:00Z',h:'Zwitserland',hc:'ch',a:'Qatar',ac:'qa',gr:'B',stad:'MetLife Stadium'},
+  {dt:'2026-06-28T20:00:00Z',h:'Brazilië',hc:'br',a:'Haïti',ac:'ht',gr:'C',stad:'Rose Bowl'},
+  {dt:'2026-06-29T17:00:00Z',h:'Tunesië',hc:'tn',a:'Nederland',ac:'nl',gr:'F',stad:"Levi's Stadium"},
+  {dt:'2026-06-29T20:00:00Z',h:'Mexico',hc:'mx',a:'Tsjechië',ac:'cz',gr:'A',stad:'Estadio Azteca'},
+  {dt:'2026-06-30T17:00:00Z',h:'USA',hc:'us',a:'Australië',ac:'au',gr:'D',stad:'AT&T Stadium'},
+  {dt:'2026-06-30T20:00:00Z',h:'Curaçao',hc:'cw',a:'Ivoorkust',ac:'ci',gr:'E',stad:'Arrowhead Stadium'},
+];
+// COUNTDOWN VOLGENDE WK MATCH (na SCHEMA definitie)
+(function tickWK(){
+  var now=new Date(),nx=SCHEMA.map(function(m){return{dt:new Date(m.dt),h:m.h,hc:m.hc,a:m.a,ac:m.ac,gr:m.gr,stad:m.stad};}).find(function(m){return m.dt>now;});
+  if(nx){
+    var d=nx.dt-now;
+    document.getElementById('wk-d').textContent=p(Math.floor(d/864e5));
+    document.getElementById('wk-h').textContent=p(Math.floor(d%864e5/36e5));
+    document.getElementById('wk-m').textContent=p(Math.floor(d%36e5/6e4));
+    document.getElementById('wk-s').textContent=p(Math.floor(d%6e4/1e3));
+    document.getElementById('wk-widget-time').textContent=bd(nx.dt.toISOString())+' · '+bt(nx.dt.toISOString())+' CEST';
+    document.getElementById('wk-grp').textContent='Groep '+nx.gr;
+    document.getElementById('wk-home').innerHTML=fl(nx.hc,40,29)+'<span>'+nx.h+'</span>';
+    document.getElementById('wk-away').innerHTML=fl(nx.ac,40,29)+'<span>'+nx.a+'</span>';
+    document.getElementById('wk-venue').innerHTML='📍 '+(nx.stad||'—');
+  }else{
+    ['wk-d','wk-h','wk-m','wk-s'].forEach(function(id){document.getElementById(id).textContent='00';});
+    document.getElementById('wk-widget-time').textContent='Alle groepswedstrijden gespeeld';
+  }
+  setTimeout(tickWK,1000);
+})();
+
+var espnEvs=null;var activeF='all';
+function renderS(f){
+  var g=document.getElementById('schema-grid');var html='';
+  if(espnEvs&&espnEvs.length>=10){
+    espnEvs.forEach(function(ev){
+      var comp=(ev.competitions||[])[0];if(!comp)return;
+      var teams=comp.competitors||[];
+      var home=teams.find(function(t){return t.homeAway==='home';})||{};
+      var away=teams.find(function(t){return t.homeAway==='away';})||{};
+      var stype=((comp.status||{}).type||{});
+      var ko=new Date(ev.date),sinds=Date.now()-ko;
+      var isD=stype.state==='post';
+      var isL=stype.state==='in'||(stype.state==='pre'&&sinds>0&&sinds<135*60*1000);
+      var hN=(home.team||{}).displayName||'?',aN=(away.team||{}).displayName||'?';
+      var hS=home.score!=null?''+home.score:'',aS=away.score!=null?''+away.score:'';
+      var isBel=hN.toLowerCase().includes('belg')||aN.toLowerCase().includes('belg');
+      if(f==='bel'&&!isBel)return;if(f==='live'&&!isL)return;if(f==='today'&&!isToday(ev.date))return;
+      var venue=((comp.venue||{}).fullName)||'';
+      var clock=(comp.status||{}).displayClock||'';
+      if(isL&&stype.state!=='in'){clock=''+Math.min(Math.floor(sinds/6e4),120);}
+      html+='<div class="sc-card'+(isL?' live':'')+(isBel?' bel':'')+'">'
+        +'<div class="sc-hdr"><div>'+(isL?'<span class="live-pill"><span class="pulse"></span> LIVE '+clock+'\'</span>':isD?'Afgelopen':bd(ev.date)+' · '+bt(ev.date)+' CEST')+'</div>'
+        +'<div>'+(isBel?'<span class="bel-pill">🇧🇪</span>':'')+'</div></div>'
+        +'<div class="sc-body"><div class="sc-team">'+fl(fc(hN),28,20)+'<span>'+hN+'</span></div>'
+        +'<div class="sc-cen">'+(isL||isD?'<div class="sc-score">'+hS+' – '+aS+'</div><div class="sc-time">'+(isL?clock+'\'':'FT')+'</div>':'<div class="sc-sched">'+bt(ev.date)+' CEST</div>')+'</div>'
+        +'<div class="sc-team right"><span>'+aN+'</span>'+fl(fc(aN),28,20)+'</div></div>'
+        +((isL||isD)?goalsHtml(comp,home,away):'')
+        +(venue?'<div class="sc-venue">📍 '+venue+'</div>':'')
+        +'</div>';
+    });
+  } else {
+    SCHEMA.forEach(function(m){
+      var isBel=!!m.bel;
+      var isPlayed=(m.hs!=null&&m.as!=null);
+      var now=new Date();var mdt=new Date(m.dt);
+      var isNow=!isPlayed&&mdt<=now&&(now-mdt)<135*60*1000;
+      if(f==='bel'&&!isBel)return;if(f==='live'&&!isNow)return;if(f==='today'&&!isToday(m.dt))return;
+      html+='<div class="sc-card'+(isNow?' live':'')+(isBel?' bel':'')+'">'
+        +'<div class="sc-hdr"><div>'+(isPlayed?'<span style="color:rgba(255,255,255,.45);font-size:10px">Afgespeeld · '+bd(m.dt)+'</span>':isNow?'<span class="live-pill"><span class="pulse"></span> LIVE</span>':bd(m.dt)+' · '+bt(m.dt)+' CEST')+'</div><div>Groep '+m.gr+(isBel?' · <span class="bel-pill">🇧🇪</span>':'')+'</div></div>'
+        +'<div class="sc-body"><div class="sc-team">'+fl(m.hc,28,20)+'<span>'+m.h+'</span></div>'
+        +'<div class="sc-cen">'+(isPlayed?'<div class="sc-score">'+m.hs+' – '+m.as+'</div><div class="sc-time">FT</div>':isNow?'<div class="sc-score">– – –</div>':'<div class="sc-sched">'+bt(m.dt)+' CEST<br/><span style="font-size:11px;opacity:.6">'+bd(m.dt)+'</span></div>')+'</div>'
+        +'<div class="sc-team right"><span>'+m.a+'</span>'+fl(m.ac,28,20)+'</div></div>'
+        +(m.stad?'<div class="sc-venue">📍 '+m.stad+'</div>':'')
+        +'</div>';
+    });
+  }
+  g.innerHTML=html||'<div style="padding:20px;color:rgba(255,255,255,.3)">Geen wedstrijden.</div>';
+}
+function filterS(f,btn){activeF=f;document.querySelectorAll('.fb').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');renderS(f);}
+renderS('all');
+
+// BRACKET
+(function(){
+  var el=document.getElementById('br-wr');
+  [{t:'Ronde van 32',n:8},{t:'Kwartfinale',n:4},{t:'Halve finale',n:2},{t:'Finale',n:1,fin:1}].forEach(function(ph){
+    var col=document.createElement('div');col.className='br-col';
+    var ms=Array(ph.n).fill(0).map(function(){return'<div class="br-m'+(ph.fin?' br-fin':'')+'"><div class="br-t">TBD</div><hr class="br-hr"/><div class="br-t">TBD</div></div>';}).join('');
+    col.innerHTML='<div class="br-title">'+ph.t+'</div><div style="display:flex;flex-direction:column;gap:8px;flex:1">'+ms+'</div>';
+    el.appendChild(col);
+  });
+  var t=document.createElement('div');t.className='br-trophy';
+  t.innerHTML='<div style="font-size:34px">🏆</div><div style="font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);text-align:center;margin-top:4px">Winnaar</div><div style="font-size:10px;color:rgba(255,255,255,.25);text-align:center;margin-top:3px">19 jul<br/>MetLife</div>';
+  el.appendChild(t);
+})();
+
+// TOPSCORERS
+function laadScorers(){
+  // Topscorers zelf berekenen uit de wedstrijddetails (ESPN-leaders-API bestaat niet meer)
+  var tally={};
+  (espnEvs||[]).forEach(function(ev){
+    var comp=(ev.competitions||[])[0]||{};
+    (comp.details||[]).forEach(function(d){
+      if(!d.scoringPlay)return;
+      var sp=(d.athletesInvolved&&d.athletesInvolved[0])||{};
+      var nm=sp.displayName||sp.shortName;if(!nm)return;
+      var t=(comp.competitors||[]).find(function(c){return ''+((c.team||{}).id)===''+((d.team||{}).id);});
+      var tm=t?(((t.team||{}).displayName)||''):'';
+      var k=nm+'|'+tm;
+      tally[k]=tally[k]||{athlete:{displayName:nm},team:{displayName:tm},value:0};
+      tally[k].value++;
+    });
+  });
+  var e=Object.keys(tally).map(function(k){return tally[k];}).sort(function(a,b){return b.value-a.value;});
+  if(e.length){toonScorers(e,true);}else{toonScorers(null,false);}
+}
+function toonScorers(entries,live){
+  var fb=[
+    {r:1,n:'C. Nkunku',t:'Frankrijk',c:'fr',g:0},{r:2,n:'K. Mbappé',t:'Frankrijk',c:'fr',g:0},
+    {r:3,n:'E. Haaland',t:'Noorwegen',c:'no',g:0},{r:4,n:'R. Lewandowski',t:'Polen',c:'pl',g:0},
+    {r:5,n:'R. Lukaku',t:'België',c:'be',g:0},{r:6,n:'L. Messi',t:'Argentinië',c:'ar',g:0},
+    {r:7,n:'C. Ronaldo',t:'Portugal',c:'pt',g:0},{r:8,n:'V. Osimhen',t:'Nigeria',c:'ng',g:0},
+    {r:9,n:'L. Díaz',t:'Colombia',c:'co',g:0},{r:10,n:'P. Pulisic',t:'USA',c:'us',g:0},
+  ];
+  var el=document.getElementById('scorers-list');el.innerHTML='';
+  var data=live?entries.slice(0,10).map(function(e,i){return{r:i+1,n:(e.athlete||{}).displayName||'?',t:(e.team||{}).displayName||'',c:fc((e.team||{}).displayName||''),g:e.value||0};}):fb;
+  data.forEach(function(s){
+    var rc=s.r===1?'g1':s.r===2?'g2':s.r===3?'g3':'';
+    var d=document.createElement('div');d.className='scorer';
+    d.innerHTML='<div class="s-rk '+rc+'">'+s.r+'</div><div class="s-info"><div class="s-name">'+s.n+'</div><div class="s-nat">'+fl(s.c||fc(s.t),18,13)+s.t+'</div></div><div class="s-goals"><div class="s-num">'+s.g+'</div><div class="s-lbl">goals</div></div>';
+    el.appendChild(d);
+  });
+}
+toonScorers(null,false);
+
+// NAV HIGHLIGHT
+var SECS=['live','belgie','groepen','sponsor','stadions','schema','bracket','scorers'];
+window.addEventListener('scroll',function(){
+  var sy=window.scrollY+80;
+  SECS.forEach(function(id){
+    var el=document.getElementById(id);if(!el)return;
+    var a=document.querySelector('.tb-nav a[href="#'+id+'"]');if(!a)return;
+    el.offsetTop<=sy&&el.offsetTop+el.offsetHeight>sy?a.classList.add('on'):a.classList.remove('on');
+  });
+},{passive:true});
+
+// REVEAL
+var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('on');});},{threshold:.06});
+document.querySelectorAll('.rv').forEach(function(el){ro.observe(el);});
+
+// NAV CLICK - betrouwbaar scrollen met offset
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id=this.getAttribute('href').slice(1);
+    var el=document.getElementById(id);
+    if(!el)return;
+    e.preventDefault();
+    // kleine vertraging voor lazy-loaded images
+    setTimeout(function(){
+      var top=el.getBoundingClientRect().top+window.scrollY-82;
+      window.scrollTo({top:top,behavior:'smooth'});
+    },50);
+  });
+});
+
+
+// TICKER VULLEN
+(function(){
+  var items=[
+    '⚽ WK 2026 BEGONNEN — 11 juni t/m 19 juli 2026',
+    '🇧🇪 Rode Duivels · Groep G · België · Egypte · Iran · Nieuw-Zeeland',
+    '🏆 Finale: 19 juli · MetLife Stadium · New York/New Jersey — UITVERKOCHT',
+    '📣 Officiële WK 2026 Sponsor: DaDenk — "Vlaanderen denkt na."',
+    '⚽ Uitslag: 🇲🇽 Mexico 2-0 🇿🇦 Zuid-Afrika · ⚽ 🇰🇷 Zuid-Korea 2-1 🇨🇿 Tsjechië',
+    '⚽ Uitslag: 🇺🇸 USA 4-1 🇵🇾 Paraguay · ⚽ 🇩🇪 Duitsland 7-1 🇨🇼 Curaçao',
+    '⚽ Uitslag: 🇳🇱 Nederland 2-2 🇯🇵 Japan · ⚽ 🇸🇪 Zweden 5-1 🇹🇳 Tunesië',
+    '🇧🇪 Uitslag: België 1-1 🇪🇬 Egypte · Groep G · Lumen Field Seattle',
+    '📍 16 stadions · 3 landen (🇺🇸🇨🇦🇲🇽) · 104 wedstrijden · 48 teams',
+  ];
+  var html=items.concat(items).map(function(t){return'<span>'+t+'</span>';}).join('');
+  document.getElementById('tk-inner').innerHTML=html;
+})();
+
+// START
+laadNu();
+</script>
+</body>
+</html>
