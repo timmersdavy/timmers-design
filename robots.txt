@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://timmersdesign.be/sitemap.xml
+
+# Respect crawl delay
+Crawl-delay: 1
