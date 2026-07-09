@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Veelgestelde vragen over Timmers Design: prijzen, levertijd, doelgroep, onderhoud, technologie en het gratis kennismakingsgesprek voor je nieuwe website.">
+  <meta name="keywords" content="webdesign faq, website prijzen, levertijd website, onderhoud website, kennismakingsgesprek">
+  <meta name="author" content="Timmers Design">
+  <meta property="og:title" content="Veelgestelde vragen - Timmers Design">
+  <meta property="og:description" content="Antwoorden op de meest gestelde vragen over webdesign bij Timmers Design: prijzen, levertijd, technologie en meer.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://timmersdesign.be/faq.html">
+  <meta property="og:image" content="https://timmersdesign.be/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="canonical" href="https://timmersdesign.be/faq.html">
+  <title>Veelgestelde Vragen - Timmers Design | Webdesign FAQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- FAQPage structured data (JSON-LD) - tekst identiek aan de zichtbare antwoorden -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wat kost een website bij Timmers Design?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Elke site is maatwerk, dus ik werk niet met vaste pakketprijzen die achteraf toch niet blijken te kloppen. Na een kort gesprek over wat je nodig hebt, krijg je een heldere richtprijs voor het volledige project, zonder verrassingen achteraf. Een eenvoudige onepager kost logischerwijs minder dan een uitgebreide site met meerdere pagina's en maatwerk."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hoe lang duurt het voor mijn website klaar is?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Een onepager staat meestal binnen een tot twee weken online. Een uitgebreidere site met meerdere pagina's neemt drie tot zes weken, afhankelijk van hoe snel de content en de feedback binnenkomen. Bij de start krijg je een concrete planning zodat je weet waar je aan toe bent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Voor wie werkt Timmers Design?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ik werk vooral voor kleine en middelgrote Belgische bedrijven, zelfstandigen en lokale ondernemers die een site willen die er professioneel uitziet en effectief klanten oplevert. Geen tussenlagen: je hebt rechtstreeks contact met wie je site ook echt bouwt."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kan ik na de oplevering nog op onderhoud rekenen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Na de oplevering laat ik je niet in de steek. Kleine aanpassingen, updates en technische opvolging kunnen via een vaste onderhoudsafspraak of los per aanvraag. Jij kiest wat bij je past en wat je budget toelaat."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Met welke technologie bouw je de website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ik bouw snelle, veilige sites met moderne technieken: schone HTML, CSS en JavaScript, en waar het echt iets toevoegt een framework. Geen zwaar, traag systeem dat je niet nodig hebt. Je site laadt vlot, werkt op elk scherm en is klaar om goed gevonden te worden in Google."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is het kennismakingsgesprek echt gratis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, het eerste gesprek is altijd gratis en vrijblijvend. We bekijken samen wat je nodig hebt, of ik de juiste persoon ben voor je project en wat het ongeveer gaat kosten. Pas daarna beslis jij of je verdergaat."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* FAQ-specifieke stijl, bovenop je bestaande merk-variabelen */
+    .faq-list {
+      max-width: 800px;
+      margin: var(--spacing-2xl) auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    .faq-item {
+      background-color: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--primary-blue);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .faq-item[open] {
+      border-left-color: var(--accent-orange);
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: var(--spacing-md) var(--spacing-lg);
+      font-weight: 600;
+      font-size: var(--font-size-base);
+      color: var(--text-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      color: var(--accent-orange);
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .faq-item[open] summary::after {
+      content: '\2212'; /* minus-teken */
+    }
+    .faq-item summary:hover { color: var(--primary-blue); }
+    .faq-answer {
+      padding: 0 var(--spacing-lg) var(--spacing-lg);
+    }
+    .faq-answer p { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+  <!-- HEADER & NAVIGATION -->
+  <header>
+    <nav class="container">
+      <div class="logo">Timmers Design</div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Kruimelpad">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <span>FAQ</span>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Veelgestelde vragen</h1>
+      <p>Alles wat je wil weten voor we samen aan je website beginnen</p>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="container py-2xl">
+    <div class="section-title">
+      <h2>Vragen &amp; antwoorden</h2>
+      <p>Staat je vraag er niet tussen? Neem gerust contact op, dan help ik je verder.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Wat kost een website bij Timmers Design?</summary>
+        <div class="faq-answer">
+          <p>Elke site is maatwerk, dus ik werk niet met vaste pakketprijzen die achteraf toch niet blijken te kloppen. Na een kort gesprek over wat je nodig hebt, krijg je een heldere richtprijs voor het volledige project, zonder verrassingen achteraf. Een eenvoudige onepager kost logischerwijs minder dan een uitgebreide site met meerdere pagina's en maatwerk.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Hoe lang duurt het voor mijn website klaar is?</summary>
+        <div class="faq-answer">
+          <p>Een onepager staat meestal binnen een tot twee weken online. Een uitgebreidere site met meerdere pagina's neemt drie tot zes weken, afhankelijk van hoe snel de content en de feedback binnenkomen. Bij de start krijg je een concrete planning zodat je weet waar je aan toe bent.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Voor wie werkt Timmers Design?</summary>
+        <div class="faq-answer">
+          <p>Ik werk vooral voor kleine en middelgrote Belgische bedrijven, zelfstandigen en lokale ondernemers die een site willen die er professioneel uitziet en effectief klanten oplevert. Geen tussenlagen: je hebt rechtstreeks contact met wie je site ook echt bouwt.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Kan ik na de oplevering nog op onderhoud rekenen?</summary>
+        <div class="faq-answer">
+          <p>Ja. Na de oplevering laat ik je niet in de steek. Kleine aanpassingen, updates en technische opvolging kunnen via een vaste onderhoudsafspraak of los per aanvraag. Jij kiest wat bij je past en wat je budget toelaat.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Met welke technologie bouw je de website?</summary>
+        <div class="faq-answer">
+          <p>Ik bouw snelle, veilige sites met moderne technieken: schone HTML, CSS en JavaScript, en waar het echt iets toevoegt een framework. Geen zwaar, traag systeem dat je niet nodig hebt. Je site laadt vlot, werkt op elk scherm en is klaar om goed gevonden te worden in Google.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is het kennismakingsgesprek echt gratis?</summary>
+        <div class="faq-answer">
+          <p>Ja, het eerste gesprek is altijd gratis en vrijblijvend. We bekijken samen wat je nodig hebt, of ik de juiste persoon ben voor je project en wat het ongeveer gaat kosten. Pas daarna beslis jij of je verdergaat.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="container py-2xl text-center">
+    <h2 class="mb-md">Nog een vraag, of meteen starten?</h2>
+    <p class="mb-lg">Plan je gratis kennismakingsgesprek in. Vrijblijvend, en je weet meteen waar je aan toe bent.</p>
+    <a href="contact.html" class="btn btn-accent btn-lg">Plan een gratis gesprek</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div>
+        <h4>Over Ons</h4>
+        <p>Timmers Design is een Belgisch webdesign bureau dat bedrijven helpt groeien met digitale oplossingen.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:info@timmersdesign.be">info@timmersdesign.be</a>
+        <p style="margin: var(--spacing-md) 0 0 0; color: rgba(255,255,255,0.7); font-size: var(--font-size-xs);">België</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Timmers Design. Alle rechten voorbehouden.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
