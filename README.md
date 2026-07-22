@@ -1,31 +1,57 @@
-# Praktijk aanvraagsysteem — Fase 1
+﻿# Timmers Design - Landing Page
 
-Aanvraag- en opvolgsysteem voor een tandarts-/kinepraktijk.
+Professionele multi-page website voor Timmers Design, een Belgisch webdesign bureau.
 
-## Wat zit erin (fase 1)
+## 📁 Project Structure
 
-- `/aanvraag` — publiek contactformulier (naam, telefoon, e-mail, dienst, bericht)
-- `/dashboard` — beveiligd overzicht van aanvragen met status (nieuw / ingepland / afgehandeld)
-- `/login` — eenvoudige login met 1 gedeeld wachtwoord voor de praktijk
+\\\
+timmers-design/
+├── index.html           # Home page
+├── services.html        # Services overview
+├── portfolio.html       # Project showcase
+├── contact.html         # Contact form
+├── css/
+│   └── styles.css      # Global styles + branding
+├── js/
+│   └── main.js         # Navigation, form handling
+├── img/                # Image assets
+├── README.md           # This file
+└── .gitignore
+\\\
 
-## Stack
+## 🎨 Branding
 
-- Next.js (App Router) + TypeScript
-- Prisma + PostgreSQL
-- Tailwind CSS
+- **Primary Color:** #2B3CC1 (Blue)
+- **Accent Color:** #E8922A (Orange)
+- **Font:** Inter (Google Fonts)
+- **Background:** White (#ffffff)
 
-## Lokaal draaien
+## 📱 Responsive Design
 
-1. Zorg voor een PostgreSQL-database en zet de connectiestring in `.env` (zie `.env.example`).
-2. `npm install`
-3. `npx prisma migrate dev`
-4. `npm run dev`
-5. Formulier: http://localhost:3000/aanvraag — Dashboard: http://localhost:3000/dashboard
+The site is fully responsive across all devices.
 
-## Environment variabelen
+## 🚀 Deployment to GitHub Pages
 
-| Variabele | Uitleg |
-|---|---|
-| `DATABASE_URL` | PostgreSQL-connectiestring |
-| `DASHBOARD_PASSWORD` | Wachtwoord om in te loggen op het dashboard |
-| `SESSION_SECRET` | Willekeurige lange string om login-sessies te ondertekenen |
+1. Push this folder to a GitHub repo
+2. In repo settings → Pages → enable GitHub Pages
+3. Site will be live at: timmersdavy.github.io/timmers-design
+
+## 🔧 Formspree Setup
+
+In contact.html, replace YOUR_FORM_ID with your actual Formspree form ID.
+
+## ✨ Features
+
+- Mobile navigation with hamburger menu
+- Smooth scrolling
+- Form validation
+- Fully responsive design
+- No frameworks - fast loading
+- Semantic HTML5
+
+## 📞 Contact
+
+Email: info@timmersdesign.be
+Location: Belgium
+
+Built with HTML5, CSS3, and Vanilla JavaScript.
