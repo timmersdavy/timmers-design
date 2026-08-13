@@ -463,6 +463,107 @@ section {
   margin-top: var(--spacing-2xl);
 }
 
+/* 7b. HOME — LIGNE CLAIRE ATELIER (comic-panel signature) */
+:root {
+  --ink: #1B1B1B;
+  --signal-red: #D6402C;
+  --sun-yellow: #F2B705;
+}
+
+.atelier-hero {
+  background-color: var(--bg-white);
+  padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+.atelier-panel {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+  border: 4px solid var(--ink);
+  padding: var(--spacing-2xl);
+}
+
+.atelier-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal-red);
+  margin-bottom: var(--spacing-sm);
+}
+
+.atelier-text h1 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  font-size: var(--font-size-3xl);
+}
+
+.atelier-lede {
+  font-size: var(--font-size-lg);
+  color: var(--gray-medium);
+  margin: var(--spacing-md) 0 var(--spacing-lg);
+}
+
+.atelier-art {
+  width: 100%;
+  height: auto;
+}
+
+.strip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
+}
+
+.strip-panel {
+  border: 3px solid var(--ink);
+  padding: var(--spacing-lg);
+}
+
+.strip-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-md);
+}
+
+.strip-panel h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.strip-panel p {
+  margin-bottom: 0;
+}
+
+.atelier-projects .project-card {
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.atelier-projects .project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.atelier-projects .project-image {
+  background: var(--belgian-blue, var(--primary-blue));
+}
+
+@media (max-width: 768px) {
+  .atelier-panel {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-lg);
+  }
+
+  .atelier-text h1 {
+    font-size: var(--font-size-2xl);
+  }
+}
+
 /* 9b. PORTFOLIO — VERTREKBORD (departures board) */
 :root {
   --board-bg: #14231C;
