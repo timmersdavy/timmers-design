@@ -17,7 +17,7 @@
   <title>Veelgestelde Vragen - Timmers Design | Webdesign FAQ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 
   <!-- FAQPage structured data (JSON-LD) - tekst identiek aan de zichtbare antwoorden -->
@@ -78,58 +78,6 @@
   }
   </script>
 
-  <style>
-    /* FAQ-specifieke stijl, bovenop je bestaande merk-variabelen */
-    .faq-list {
-      max-width: 800px;
-      margin: var(--spacing-2xl) auto 0;
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-md);
-    }
-    .faq-item {
-      background-color: var(--bg-light);
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--primary-blue);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    .faq-item[open] {
-      border-left-color: var(--accent-orange);
-      box-shadow: var(--shadow-sm);
-    }
-    .faq-item summary {
-      list-style: none;
-      cursor: pointer;
-      padding: var(--spacing-md) var(--spacing-lg);
-      font-weight: 600;
-      font-size: var(--font-size-base);
-      color: var(--text-dark);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--spacing-md);
-    }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after {
-      content: '+';
-      color: var(--accent-orange);
-      font-size: 1.5rem;
-      font-weight: 700;
-      line-height: 1;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
-    .faq-item[open] summary::after {
-      content: '\2212'; /* minus-teken */
-    }
-    .faq-item summary:hover { color: var(--primary-blue); }
-    .faq-answer {
-      padding: 0 var(--spacing-lg) var(--spacing-lg);
-    }
-    .faq-answer p { margin-bottom: 0; }
-  </style>
 </head>
 <body>
   <!-- HEADER & NAVIGATION -->
@@ -173,45 +121,63 @@
       <p>Staat je vraag er niet tussen? Neem gerust contact op, dan help ik je verder.</p>
     </div>
 
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>Wat kost een website bij Timmers Design?</summary>
-        <div class="faq-answer">
+    <div class="transcript-list">
+      <details class="transcript-item">
+        <summary>
+          <span class="transcript-tag">V01</span>
+          <span class="transcript-q">Wat kost een website bij Timmers Design?</span>
+        </summary>
+        <div class="transcript-a">
           <p>Elke site is maatwerk, dus ik werk niet met vaste pakketprijzen die achteraf toch niet blijken te kloppen. Na een kort gesprek over wat je nodig hebt, krijg je een heldere richtprijs voor het volledige project, zonder verrassingen achteraf. Een eenvoudige onepager kost logischerwijs minder dan een uitgebreide site met meerdere pagina's en maatwerk.</p>
         </div>
       </details>
 
-      <details class="faq-item">
-        <summary>Hoe lang duurt het voor mijn website klaar is?</summary>
-        <div class="faq-answer">
+      <details class="transcript-item">
+        <summary>
+          <span class="transcript-tag">V02</span>
+          <span class="transcript-q">Hoe lang duurt het voor mijn website klaar is?</span>
+        </summary>
+        <div class="transcript-a">
           <p>Een onepager staat meestal binnen een tot twee weken online. Een uitgebreidere site met meerdere pagina's neemt drie tot zes weken, afhankelijk van hoe snel de content en de feedback binnenkomen. Bij de start krijg je een concrete planning zodat je weet waar je aan toe bent.</p>
         </div>
       </details>
 
-      <details class="faq-item">
-        <summary>Voor wie werkt Timmers Design?</summary>
-        <div class="faq-answer">
+      <details class="transcript-item">
+        <summary>
+          <span class="transcript-tag">V03</span>
+          <span class="transcript-q">Voor wie werkt Timmers Design?</span>
+        </summary>
+        <div class="transcript-a">
           <p>Ik werk vooral voor kleine en middelgrote Belgische bedrijven, zelfstandigen en lokale ondernemers die een site willen die er professioneel uitziet en effectief klanten oplevert. Geen tussenlagen: je hebt rechtstreeks contact met wie je site ook echt bouwt.</p>
         </div>
       </details>
 
-      <details class="faq-item">
-        <summary>Kan ik na de oplevering nog op onderhoud rekenen?</summary>
-        <div class="faq-answer">
+      <details class="transcript-item">
+        <summary>
+          <span class="transcript-tag">V04</span>
+          <span class="transcript-q">Kan ik na de oplevering nog op onderhoud rekenen?</span>
+        </summary>
+        <div class="transcript-a">
           <p>Ja. Na de oplevering laat ik je niet in de steek. Kleine aanpassingen, updates en technische opvolging kunnen via een vaste onderhoudsafspraak of los per aanvraag. Jij kiest wat bij je past en wat je budget toelaat.</p>
         </div>
       </details>
 
-      <details class="faq-item">
-        <summary>Met welke technologie bouw je de website?</summary>
-        <div class="faq-answer">
+      <details class="transcript-item">
+        <summary>
+          <span class="transcript-tag">V05</span>
+          <span class="transcript-q">Met welke technologie bouw je de website?</span>
+        </summary>
+        <div class="transcript-a">
           <p>Ik bouw snelle, veilige sites met moderne technieken: schone HTML, CSS en JavaScript, en waar het echt iets toevoegt een framework. Geen zwaar, traag systeem dat je niet nodig hebt. Je site laadt vlot, werkt op elk scherm en is klaar om goed gevonden te worden in Google.</p>
         </div>
       </details>
 
-      <details class="faq-item">
-        <summary>Is het kennismakingsgesprek echt gratis?</summary>
-        <div class="faq-answer">
+      <details class="transcript-item">
+        <summary>
+          <span class="transcript-tag">V06</span>
+          <span class="transcript-q">Is het kennismakingsgesprek echt gratis?</span>
+        </summary>
+        <div class="transcript-a">
           <p>Ja, het eerste gesprek is altijd gratis en vrijblijvend. We bekijken samen wat je nodig hebt, of ik de juiste persoon ben voor je project en wat het ongeveer gaat kosten. Pas daarna beslis jij of je verdergaat.</p>
         </div>
       </details>

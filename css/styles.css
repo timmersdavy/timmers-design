@@ -711,6 +711,124 @@ section {
   }
 }
 
+/* 8c. FAQ — interview transcript */
+.transcript-list {
+  max-width: 760px;
+  margin: var(--spacing-2xl) auto 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.transcript-item {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.transcript-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: var(--spacing-lg) 0;
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-md);
+}
+
+.transcript-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.transcript-item summary::after {
+  content: '+';
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  color: var(--ink);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.transcript-item[open] summary::after {
+  content: '\2212';
+  color: var(--signal-red);
+}
+
+.transcript-tag {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--signal-red);
+  flex-shrink: 0;
+  padding-top: 0.3em;
+}
+
+.transcript-q {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  color: var(--ink);
+}
+
+.transcript-item summary:hover .transcript-q {
+  color: var(--primary-blue);
+}
+
+.transcript-a {
+  padding: 0 0 var(--spacing-lg) calc(2.5rem + var(--spacing-md));
+  border-left: 3px solid var(--ink);
+  margin-left: 0.3rem;
+}
+
+.transcript-a p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .transcript-item summary {
+    flex-wrap: wrap;
+  }
+
+  .transcript-tag {
+    flex-basis: 100%;
+  }
+
+  .transcript-q {
+    font-size: var(--font-size-base);
+  }
+
+  .transcript-a {
+    padding-left: var(--spacing-md);
+    margin-left: 0;
+  }
+}
+
+/* 10b. CONTACT — restrained ink-line form */
+.contact-form--ink {
+  background-color: var(--bg-white);
+  border: 3px solid var(--ink);
+  border-radius: 0;
+}
+
+.contact-form--ink .form-group input,
+.contact-form--ink .form-group textarea {
+  border-radius: 0;
+  border: 2px solid var(--ink);
+}
+
+.contact-form--ink .form-group input:focus,
+.contact-form--ink .form-group textarea:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(43, 60, 193, 0.12);
+}
+
+.contact-form--ink .btn-primary {
+  border-radius: 0;
+}
+
+.contact-method--ink {
+  position: relative;
+  background-color: var(--bg-white);
+  border: 2px solid var(--ink);
+  border-radius: 0;
+}
+
 /* 9b. PORTFOLIO — VERTREKBORD (departures board) */
 :root {
   --board-bg: #14231C;
