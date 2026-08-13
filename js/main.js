@@ -155,3 +155,42 @@ window.addEventListener('load', function() {
     }
   }
 });
+
+// Portfolio vertrekbord: split-flap reveal on load
+(function() {
+  const flaps = document.querySelectorAll('.board .flap');
+  if (!flaps.length) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const flapChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·';
+
+  flaps.forEach((flap, index) => {
+    const final = flap.dataset.final || flap.textContent;
+
+    if (reduceMotion) {
+      flap.textContent = final;
+      return;
+    }
+
+    const rowDelay = Math.floor(index / 4) * 90;
+    const cycles = 5 + (index % 4);
+    let tick = 0;
+
+    setTimeout(() => {
+      flap.classList.add('is-flapping');
+      const interval = setInterval(() => {
+        tick++;
+        if (tick >= cycles) {
+          clearInterval(interval);
+          flap.textContent = final;
+          flap.classList.remove('is-flapping');
+          return;
+        }
+        flap.textContent = final
+          .split('')
+          .map(ch => (ch === ' ' ? ' ' : flapChars[Math.floor(Math.random() * flapChars.length)]))
+          .join('');
+      }, 60);
+    }, rowDelay);
+  });
+})();

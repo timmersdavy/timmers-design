@@ -463,6 +463,188 @@ section {
   margin-top: var(--spacing-2xl);
 }
 
+/* 9b. PORTFOLIO — VERTREKBORD (departures board) */
+:root {
+  --board-bg: #14231C;
+  --board-ink: #ECE7DD;
+  --flap-amber: #F2A93B;
+  --rust: #C1502B;
+  --font-display: 'Oswald', var(--font-primary);
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+.board {
+  background-color: var(--board-bg);
+  color: var(--board-ink);
+  padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+.board-inner {
+  max-width: 900px;
+}
+
+.board-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--flap-amber);
+  margin-bottom: var(--spacing-sm);
+}
+
+.board h1 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--board-ink);
+  font-size: var(--font-size-3xl);
+}
+
+.board-sub {
+  color: rgba(236, 231, 221, 0.75);
+  font-size: var(--font-size-base);
+  max-width: 46ch;
+  margin: var(--spacing-sm) 0 var(--spacing-xl);
+}
+
+.board-table {
+  list-style: none;
+  border-top: 1px solid rgba(236, 231, 221, 0.15);
+}
+
+.board-row {
+  border-bottom: 1px solid rgba(236, 231, 221, 0.15);
+}
+
+.board-row a {
+  display: grid;
+  grid-template-columns: 5rem 1fr 10rem 6rem;
+  gap: var(--spacing-md);
+  align-items: baseline;
+  padding: var(--spacing-sm) 0;
+  color: var(--board-ink);
+}
+
+.board-row a:hover,
+.board-row a:focus-visible {
+  color: var(--board-ink);
+  background-color: rgba(242, 169, 59, 0.08);
+}
+
+.board-row a:focus-visible {
+  outline: 2px solid var(--flap-amber);
+  outline-offset: 2px;
+}
+
+.board-row--head {
+  display: grid;
+  grid-template-columns: 5rem 1fr 10rem 6rem;
+  gap: var(--spacing-md);
+  padding: 0 0 var(--spacing-xs);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(236, 231, 221, 0.5);
+}
+
+.board-cell {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.board-cell--code {
+  color: var(--flap-amber);
+}
+
+.board-cell--project {
+  font-weight: 600;
+}
+
+.board-cell--status {
+  color: var(--flap-amber);
+  font-weight: 600;
+  text-align: right;
+}
+
+.flap.is-flapping {
+  animation: flap-flicker 0.08s steps(1) infinite;
+}
+
+@keyframes flap-flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.55; }
+  100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flap.is-flapping {
+    animation: none;
+  }
+}
+
+/* Case grid (ticket-style cards) */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.case-card {
+  position: relative;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  scroll-margin-top: 90px;
+}
+
+.case-code {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.1em;
+  color: var(--rust);
+  margin-bottom: var(--spacing-sm);
+}
+
+.case-card h3 {
+  margin: var(--spacing-sm) 0 var(--spacing-sm);
+}
+
+.case-card .tag {
+  background-color: var(--primary-blue);
+}
+
+.case-services {
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+  color: var(--text-dark);
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .board-row a,
+  .board-row--head {
+    grid-template-columns: 3.5rem 1fr 5rem;
+  }
+
+  .board-cell--category {
+    display: none;
+  }
+
+  .board-cell--project {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
+
 /* 10. CONTACT PAGE STYLES */
 .contact-section {
   max-width: 600px;
