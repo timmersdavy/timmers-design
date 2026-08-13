@@ -12,6 +12,7 @@
   --text-light: #ffffff;
   --bg-white: #ffffff;
   --bg-light: #f9f9f9;
+  --paper: #F6F3EC;
   --border-color: #e0e0e0;
   --gray-medium: #666666;
 
@@ -56,7 +57,7 @@ body {
   font-size: var(--font-size-base);
   line-height: 1.6;
   color: var(--text-dark);
-  background-color: var(--bg-white);
+  background-color: var(--paper);
 }
 
 /* Headings */
@@ -461,6 +462,15 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-lg);
   margin-top: var(--spacing-2xl);
+}
+
+/* 6b. SECTION TINTS — rhythm against the paper canvas */
+.section-tint-blue {
+  background-color: rgba(43, 60, 193, 0.05);
+}
+
+.section-tint-amber {
+  background-color: rgba(242, 169, 59, 0.1);
 }
 
 /* 7b. HOME — LIGNE CLAIRE ATELIER (comic-panel signature) */
