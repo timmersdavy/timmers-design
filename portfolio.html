@@ -13,7 +13,7 @@
   <title>Portfolio - Timmers Design | Webdesign Projecten</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -35,21 +35,115 @@
     <a href="index.html">Home</a> <span>&gt;</span> <span>Portfolio</span>
   </nav>
 
-  <section class="hero">
-    <div class="hero-content">
+  <section class="board" aria-label="Projectoverzicht">
+    <div class="board-inner container">
+      <p class="board-eyebrow">Timmers Design — Vertrekbord</p>
       <h1>Ons Werk</h1>
-      <p>Projecten die we trots op zijn</p>
+      <p class="board-sub">Zes projecten, zes keer eigen grond onder de voeten. Geen twee op dezelfde leest.</p>
+
+      <ul class="board-table">
+        <li class="board-row board-row--head" aria-hidden="true">
+          <span class="board-cell board-cell--code">Code</span>
+          <span class="board-cell board-cell--project">Project</span>
+          <span class="board-cell board-cell--category">Categorie</span>
+          <span class="board-cell board-cell--status">Status</span>
+        </li>
+        <li class="board-row">
+          <a href="#case-dadenk">
+            <span class="board-cell board-cell--code flap" data-final="SM·01">SM·01</span>
+            <span class="board-cell board-cell--project flap" data-final="DADENK">DADENK</span>
+            <span class="board-cell board-cell--category flap" data-final="SOCIAL MEDIA">SOCIAL MEDIA</span>
+            <span class="board-cell board-cell--status flap" data-final="LIVE">LIVE</span>
+          </a>
+        </li>
+        <li class="board-row">
+          <a href="#case-klustuinwim">
+            <span class="board-cell board-cell--code flap" data-final="BIZ·02">BIZ·02</span>
+            <span class="board-cell board-cell--project flap" data-final="KLUS &amp; TUIN WIM">KLUS &amp; TUIN WIM</span>
+            <span class="board-cell board-cell--category flap" data-final="BUSINESS SITE">BUSINESS SITE</span>
+            <span class="board-cell board-cell--status flap" data-final="LIVE">LIVE</span>
+          </a>
+        </li>
+        <li class="board-row">
+          <a href="#case-plons">
+            <span class="board-cell board-cell--code flap" data-final="MAP·03">MAP·03</span>
+            <span class="board-cell board-cell--project flap" data-final="PLONS! ZWEMBADEN">PLONS! ZWEMBADEN</span>
+            <span class="board-cell board-cell--category flap" data-final="GIDS &amp; KAART">GIDS &amp; KAART</span>
+            <span class="board-cell board-cell--status flap" data-final="OPEN">OPEN</span>
+          </a>
+        </li>
+        <li class="board-row">
+          <a href="#case-belgievliegt">
+            <span class="board-cell board-cell--code flap" data-final="TRV·04">TRV·04</span>
+            <span class="board-cell board-cell--project flap" data-final="BELGIË VLIEGT">BELGIË VLIEGT</span>
+            <span class="board-cell board-cell--category flap" data-final="TRAVEL">TRAVEL</span>
+            <span class="board-cell board-cell--status flap" data-final="LIVE">LIVE</span>
+          </a>
+        </li>
+        <li class="board-row">
+          <a href="#case-rollendcommentaar">
+            <span class="board-cell board-cell--code flap" data-final="NWS·05">NWS·05</span>
+            <span class="board-cell board-cell--project flap" data-final="ROLLEND COMMENTAAR">ROLLEND COMMENTAAR</span>
+            <span class="board-cell board-cell--category flap" data-final="NEWS &amp; HUMOR">NEWS &amp; HUMOR</span>
+            <span class="board-cell board-cell--status flap" data-final="DAILY">DAILY</span>
+          </a>
+        </li>
+        <li class="board-row">
+          <a href="#case-speelplek">
+            <span class="board-cell board-cell--code flap" data-final="REC·06">REC·06</span>
+            <span class="board-cell board-cell--project flap" data-final="SPEELPLEK">SPEELPLEK</span>
+            <span class="board-cell board-cell--category flap" data-final="RECREATIE GIDS">RECREATIE GIDS</span>
+            <span class="board-cell board-cell--status flap" data-final="LIVE">LIVE</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 
   <section class="container py-2xl">
-    <div class="portfolio-grid">
-      <div class="project-card"><div class="project-image">DaDenk</div><div class="project-info"><span class="tag">Social Media</span><h3>DaDenk</h3><p>Een Vlaamse humorkrant met dagelijkse observationele humor.</p><p style="margin-top: var(--spacing-md); font-weight: 600;">Services: Strategy, Content, Community</p></div></div>
-      <div class="project-card"><div class="project-image">Klus & Tuin Wim</div><div class="project-info"><span class="tag">Business Site</span><h3>Klus & Tuin Wim</h3><p>Portfolio-site voor een lokale klusjesman.</p><p style="margin-top: var(--spacing-md); font-weight: 600;">Services: Design, Development, SEO</p></div></div>
-      <div class="project-card"><div class="project-image">Plons!</div><div class="project-info"><span class="tag">Guide & Map</span><h3>Plons! Zwembaden</h3><p>Gids voor openbare zwembaden met live open/dicht-radar.</p><p style="margin-top: var(--spacing-md); font-weight: 600;">Services: Design, Development, Map</p></div></div>
-      <div class="project-card"><div class="project-image">België Vliegt</div><div class="project-info"><span class="tag">Travel</span><h3>België Vliegt</h3><p>Vliegtijdengids met vergelijking-platform.</p><p style="margin-top: var(--spacing-md); font-weight: 600;">Services: Design, Development, Database</p></div></div>
-      <div class="project-card"><div class="project-image">Rollend Commentaar</div><div class="project-info"><span class="tag">News & Humor</span><h3>Rollend Commentaar</h3><p>Dagelijkse humorkrant gebaseerd op VRT-nieuws.</p><p style="margin-top: var(--spacing-md); font-weight: 600;">Services: Development, Automation, Email</p></div></div>
-      <div class="project-card"><div class="project-image">Speelplek</div><div class="project-info"><span class="tag">Recreation Guide</span><h3>Speelplek</h3><p>Gids voor openbare speeltuinen in Vlaanderen.</p><p style="margin-top: var(--spacing-md); font-weight: 600;">Services: Design, Development, Cartography</p></div></div>
+    <div class="case-grid">
+      <article class="case-card" id="case-dadenk">
+        <span class="case-code">SM·01</span>
+        <span class="tag">Social Media</span>
+        <h3>DaDenk</h3>
+        <p>Een Vlaamse humorkrant met dagelijkse observationele humor.</p>
+        <p class="case-services">Strategy, Content, Community</p>
+      </article>
+      <article class="case-card" id="case-klustuinwim">
+        <span class="case-code">BIZ·02</span>
+        <span class="tag">Business Site</span>
+        <h3>Klus &amp; Tuin Wim</h3>
+        <p>Portfolio-site voor een lokale klusjesman.</p>
+        <p class="case-services">Design, Development, SEO</p>
+      </article>
+      <article class="case-card" id="case-plons">
+        <span class="case-code">MAP·03</span>
+        <span class="tag">Guide &amp; Map</span>
+        <h3>Plons! Zwembaden</h3>
+        <p>Gids voor openbare zwembaden met live open/dicht-radar.</p>
+        <p class="case-services">Design, Development, Map</p>
+      </article>
+      <article class="case-card" id="case-belgievliegt">
+        <span class="case-code">TRV·04</span>
+        <span class="tag">Travel</span>
+        <h3>België Vliegt</h3>
+        <p>Vliegtijdengids met vergelijking-platform.</p>
+        <p class="case-services">Design, Development, Database</p>
+      </article>
+      <article class="case-card" id="case-rollendcommentaar">
+        <span class="case-code">NWS·05</span>
+        <span class="tag">News &amp; Humor</span>
+        <h3>Rollend Commentaar</h3>
+        <p>Dagelijkse humorkrant gebaseerd op VRT-nieuws.</p>
+        <p class="case-services">Development, Automation, Email</p>
+      </article>
+      <article class="case-card" id="case-speelplek">
+        <span class="case-code">REC·06</span>
+        <span class="tag">Recreation Guide</span>
+        <h3>Speelplek</h3>
+        <p>Gids voor openbare speeltuinen in Vlaanderen.</p>
+        <p class="case-services">Design, Development, Cartography</p>
+      </article>
     </div>
   </section>
 
