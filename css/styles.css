@@ -564,6 +564,153 @@ section {
   }
 }
 
+/* 8b. SERVICES — route line (real 6-step sequence) + feature lists */
+.strip-features {
+  list-style: none;
+  margin-top: var(--spacing-md);
+  padding: 0;
+  color: var(--gray-medium);
+}
+
+.strip-features li {
+  padding: var(--spacing-xs) 0;
+  border-top: 1px solid var(--border-color);
+  font-size: var(--font-size-sm);
+}
+
+.strip-features li:first-child {
+  border-top: none;
+}
+
+.strip-features li::before {
+  content: '—';
+  color: var(--signal-red);
+  margin-right: var(--spacing-sm);
+  font-family: var(--font-mono);
+}
+
+.route {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-2xl);
+}
+
+.route-step {
+  position: relative;
+  text-align: center;
+  padding-top: var(--spacing-xl);
+}
+
+.route-step h3 {
+  font-size: var(--font-size-base);
+  margin: var(--spacing-md) 0 var(--spacing-xs);
+}
+
+.route-step p {
+  font-size: var(--font-size-xs);
+  margin-bottom: 0;
+}
+
+.route-num {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  background-color: var(--bg-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  z-index: 1;
+}
+
+.route-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  width: 100%;
+  height: 3px;
+  background-color: var(--ink);
+  z-index: 0;
+}
+
+.maintenance-card {
+  position: relative;
+  background-color: var(--bg-white);
+  border: 3px solid var(--ink);
+  padding: var(--spacing-2xl);
+  text-align: left;
+  max-width: 480px;
+  margin: var(--spacing-2xl) auto 0;
+}
+
+.maintenance-features {
+  margin-bottom: var(--spacing-lg);
+}
+
+.maintenance-price {
+  text-align: center;
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.maintenance-amount {
+  font-family: var(--font-display);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.maintenance-period {
+  font-size: var(--font-size-sm);
+  color: var(--gray-medium);
+}
+
+.maintenance-price .btn {
+  margin-top: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .route {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .route-step {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: var(--spacing-md);
+    text-align: left;
+    padding-top: 0;
+    padding-left: 0;
+  }
+
+  .route-num {
+    position: static;
+    transform: none;
+  }
+
+  .route-step h3,
+  .route-step p {
+    grid-column: 2;
+  }
+
+  .route-step:not(:last-child)::after {
+    top: 44px;
+    left: 22px;
+    width: 3px;
+    height: calc(100% + var(--spacing-lg) - 22px);
+  }
+}
+
 /* 8c. FAQ — interview transcript */
 .transcript-list {
   max-width: 760px;
