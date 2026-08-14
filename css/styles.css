@@ -976,9 +976,30 @@ section {
   position: relative;
   background-color: var(--bg-white);
   border: 1px solid var(--border-color);
+  border-top: 4px solid var(--rust);
   border-radius: var(--border-radius);
   padding: var(--spacing-lg);
   scroll-margin-top: 90px;
+}
+
+.case-card .tag {
+  background-color: var(--rust);
+}
+
+.case-card--blue {
+  border-top-color: var(--primary-blue);
+}
+
+.case-card--blue .tag {
+  background-color: var(--primary-blue);
+}
+
+.case-card--amber {
+  border-top-color: var(--flap-amber);
+}
+
+.case-card--amber .tag {
+  background-color: #B8790A;
 }
 
 .case-code {
@@ -992,10 +1013,6 @@ section {
 
 .case-card h3 {
   margin: var(--spacing-sm) 0 var(--spacing-sm);
-}
-
-.case-card .tag {
-  background-color: var(--primary-blue);
 }
 
 .case-services {
