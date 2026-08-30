@@ -1,15 +1,7 @@
-# NOW
+# NOW — Timmers Design
 
-Waar Davy op dit moment mee bezig is bij TimmersDesign. Kort houden, telkens
-bijwerken.
-
-**Laatst bijgewerkt:** 2026-08-30
-
-## Focus deze week
-- _(in te vullen)_
-
-## Lopende projecten
-- Zie `klanten.md`
-
-## Open acties
-- _(in te vullen)_
+- VVGT: offerte goedgekeurd, wacht op klantadres voor factuur en mogelijk stijlboek van Diana
+- Mac Mini M6 bestelling in verwerking bij Lab9 Olen (order #339270324), thuislevering, financiering
+- Google Drive-structuur "TimmersDesign - Facturen, Offertes & Creditnota's" aangemaakt, wordt gevuld zodra Mac Mini er is (nu nog lokaal op PC)
+- Google Ads loopt (€5/dag)
+- Facebook-leadgeneratie actief in ondernemersgroepen
