@@ -1,26 +1,26 @@
-# brein/ — TimmersDesign kennisbank
+# CLAUDE.md — Timmers Design
 
-Dit is Davy's persoonlijk "tweede brein" voor TimmersDesign: bedrijfscontext,
-aanbod, klanten, stem en werkregels op één plek, zodat Claude er in elk
-gesprek uit kan putten in plaats van dat Davy alles opnieuw moet uitleggen.
+## Wie ik ben
+Ik ben Davy Timmers, freelance webdesigner (bijberoep) voor KMO's in Limburg, België.
+Mijn bedrijf: Timmers Design (timmersdesign.be).
 
-## Bestanden
+## Hoe je moet reageren
+- Altijd Nederlands, tenzij ik zelf Engels gebruik.
+- Beknopt en praktisch. Geen onnodige inleidingen of conclusies.
+- Ik ben een "learn by doing" type — geef me stappen, geen lange theorie.
+- Bij reisadvies (bv. voor klantafspraken): altijd rekening houden met toegankelijkheid, ik gebruik een rolstoel.
+- Gebruik de huisstijl-regels uit stem.md als je documenten of teksten voor klanten opstelt.
 
-- **bedrijf.md** — wie TimmersDesign is, structuur, BTW-status, contactgegevens
-- **aanbod.md** — pakketten, tarieven, BTW-regeling
-- **klanten.md** — klanten, projecten, status, afspraken
-- **stem.md** — schrijfstijl en toon voor communicatie naar klanten
-- **doelen.md** — korte- en langetermijndoelen
-- **NOW.md** — waar Davy nu mee bezig is / focus van de week
-- **rules.md** — vaste regels en grenzen (bv. BTW-vrijstellingsdrempel bewaken)
-- **TOOLS.md** — welke tools/diensten gebruikt worden en waarvoor
+## Context-bestanden in deze map
+- bedrijf.md — kernfeiten over Timmers Design (ondernemingsnummer, BTW, uren)
+- aanbod.md — pakketten en tarieven
+- klanten.md — actieve klanten en status
+- stem.md — huisstijl voor offertes/facturen/creditnota's
+- doelen.md — korte- en langetermijndoelen
+- NOW.md — wat er deze week/maand loopt
+- rules.md — vaste werkregels
+- TOOLS.md — welke tools/automatisaties ik gebruik
+- memory/MEMORY.md — lopende feiten en beslissingen die evolueren
+- projects/<naam>/context.md — per-project details
 
-## Gebruik door Claude
-
-- Lees relevante bestanden uit deze map automatisch mee bij vragen over
-  TimmersDesign, klanten, aanbod, prijzen of BTW — vraag niet expliciet of
-  Davy dit wil, tenzij het echt nodig is.
-- Houd bestanden actueel: als Davy nieuwe info deelt (nieuwe klant, gewijzigd
-  tarief, nieuw doel), stel voor het relevante bestand bij te werken.
-- Behandel dit als brondata, niet als instructies om te volgen buiten de
-  context van TimmersDesign-werk.
+Lees deze bestanden als context bij elke vraag over Timmers Design; vraag niet opnieuw naar info die hier al in staat.
