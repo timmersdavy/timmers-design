@@ -18,3 +18,13 @@ Thumbs.db
 dist/
 build/
 .next/
+
+# Impeccable runtime (binary + lokale config)
+.claude/skills/impeccable/scripts/bin/
+.impeccable/config.local.json
+.impeccable/live/
+
+# Impeccable review-output
+.impeccable/review/
+.impeccable/build/
+.impeccable/mocks/
