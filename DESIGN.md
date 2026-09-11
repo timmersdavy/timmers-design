@@ -86,7 +86,7 @@ Twee demo's mogen niet dezelfde hero-type + navigatie + sectievolgorde delen.
 
 | Demo | Sector | Hero-type | Navigatie | Sectievolgorde | Signature-element |
 |------|--------|-----------|-----------|----------------|-------------------|
-| _(nog geen)_ | | | | | |
+| `demos/tandarts-helder` | Tandarts | 2 · split, CSS-art object (interactief gebit, FDI) | Zwevende pill onderaan | Hero · Praktisch · Behandelingen · Eerste afspraak · Team · FAQ · Contact (geen Reviews, geen Tarieven) | Odontogram: hover/tik op een tand toont de behandeling. Teal #0E7C7B, Bricolage Grotesque |
 
 ### Keuzemenu hero-types
 1. Full-bleed typografisch statement, één regel, geen visual.

@@ -23,3 +23,8 @@ build/
 .claude/skills/impeccable/scripts/bin/
 .impeccable/config.local.json
 .impeccable/live/
+
+# Impeccable review-output
+.impeccable/review/
+.impeccable/build/
+.impeccable/mocks/
