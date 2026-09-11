@@ -1,6 +1,6 @@
 # DESIGN.md — TimmersDesign demo-sites
 
-Context-bestand voor design-tooling (Impeccable, frontend-design skill, apple-web-design skill).
+Visueel systeem voor de sector-demo's. Productwaarheid staat in PRODUCT.md (Impeccable init).
 Lees dit vóór je een nieuwe demo bouwt of een bestaande opwaardeert.
 
 ## Product
