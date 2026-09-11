@@ -1,0 +1,317 @@
+/* ============================================================
+   Kinepraktijk Veerkracht · demo door TimmersDesign
+   Warm zand canvas, salie-groen structuur, terracotta CTA's, Figtree.
+   ============================================================ */
+
+/* 1. Tokens */
+:root {
+  --sector: #5B7A63;
+  --sector-deep: #45604C;
+  --sector-tint: #E3EBE4;
+  --sector-tint-2: #CBD9CE;
+  --accent: #C97C5D;
+  --accent-deep: #A96146;
+  --ink: #23261F;
+  --ink-2: #4E5347;
+  --ink-3: #5F665A;
+  --paper: #F7F4EE;
+  --paper-2: #FFFFFF;
+  --paper-3: #EFEAE0;
+  --line: rgba(35, 38, 31, .10);
+  --line-strong: rgba(35, 38, 31, .22);
+  --shadow-soft: 0 10px 30px rgba(35, 38, 31, .08), 0 2px 6px rgba(35, 38, 31, .04);
+
+  --font: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --measure: 62ch;
+  --gutter: clamp(20px, 5vw, 64px);
+  --section: clamp(72px, 10vw, 136px);
+  --radius: 16px;
+  --pill: 980px;
+  --topbar-h: 68px;
+}
+
+/* 2. Reset en browser-oppervlakken */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--topbar-h) + 16px); }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--sector-tint-2); color: var(--sector-deep); }
+:focus-visible { outline: 3px solid var(--accent-deep); outline-offset: 3px; border-radius: 8px; }
+html { scrollbar-color: var(--sector-tint-2) transparent; }
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-thumb { background: var(--sector-tint-2); border: 3px solid var(--paper); border-radius: 8px; }
+a { color: var(--sector-deep); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+a:hover { color: var(--ink); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; }
+h3 { font-size: 21px; font-weight: 600; letter-spacing: -.01em; line-height: 1.25; }
+p { margin: 0; }
+p + p { margin-top: .75em; }
+img, svg { display: block; }
+.skip { position: absolute; left: 16px; top: -60px; padding: 10px 14px; background: var(--ink); color: #fff; border-radius: 8px; z-index: 60; }
+.skip:focus { top: 16px; }
+.note { color: var(--ink-3); font-size: 15px; }
+
+main > section { padding-inline: var(--gutter); max-width: 1120px; margin-inline: auto; }
+.section-head { max-width: var(--measure); }
+.section-head p { margin-top: 14px; color: var(--ink-2); font-size: 18px; }
+
+/* 3. Topbar (sticky, blur) */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; gap: 16px;
+  height: var(--topbar-h); padding-inline: var(--gutter);
+  background: rgba(247, 244, 238, .78);
+  -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+.wordmark { display: inline-flex; align-items: center; gap: 12px; color: var(--sector); text-decoration: none; margin-right: auto; }
+.wordmark span { font-weight: 700; font-size: 21px; letter-spacing: -.02em; color: var(--ink); line-height: 1; display: flex; flex-direction: column; gap: 3px; }
+.wordmark small { font-weight: 500; font-size: 12px; letter-spacing: .01em; color: var(--ink-3); }
+.topnav { display: none; gap: 4px; }
+.topnav a {
+  padding: 8px 12px; border-radius: var(--pill); text-decoration: none; color: var(--ink-2); font-weight: 500; font-size: 15px;
+  transition: background-color .2s var(--ease), color .2s var(--ease);
+}
+.topnav a:hover, .topnav a.is-current { background: var(--sector-tint); color: var(--sector-deep); }
+.btn-call {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent-deep); color: #fff; text-decoration: none;
+  transition: background-color .2s var(--ease);
+}
+.btn-call:hover { background: #8F5039; color: #fff; }
+
+/* 4. Knoppen: terracotta voor de actie, salie voor structuur */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 22px; border-radius: var(--pill);
+  font-weight: 600; font-size: 17px; text-decoration: none; border: 0; cursor: pointer; font-family: inherit;
+  transition: background-color .25s var(--ease), color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.btn-primary { background: var(--accent-deep); color: #fff; }
+.btn-primary:hover { background: #8F5039; color: #fff; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(169,97,70,.30); }
+.btn-primary:active { transform: none; box-shadow: none; }
+.btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.btn-ghost:hover { background: var(--paper-2); color: var(--ink); }
+.btn-wide { width: 100%; }
+.btn-top { min-height: 40px; padding: 0 16px; font-size: 15px; }
+
+/* 5. Hero met traject-tijdlijn: de lijn is de structuur, niet de kaarten */
+.hero { padding-block: clamp(40px, 7vw, 88px) 0; }
+.hero-head { max-width: 720px; }
+.hero h1 { font-size: clamp(38px, 5.8vw, 60px); font-weight: 600; letter-spacing: -.03em; line-height: 1.04; }
+.lede { font-size: clamp(18px, 1.6vw, 21px); line-height: 1.5; color: var(--ink-2); margin-top: 22px; max-width: 58ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+.traject { position: relative; margin-top: clamp(48px, 7vw, 88px); }
+.fases { list-style: none; margin: 0; padding: 0 0 0 64px; display: grid; gap: 40px; }
+.fase { position: relative; }
+.fase h2 { font-size: 24px; letter-spacing: -.015em; }
+.fase-tijd { color: var(--sector-deep); font-weight: 600; font-size: 14px; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.fase p:last-child { margin-top: 10px; color: var(--ink-2); max-width: 44ch; }
+.fase-mark {
+  position: absolute; left: -64px; top: -2px;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--paper); color: var(--ink-3);
+  font-weight: 700; font-size: 18px;
+  box-shadow: inset 0 0 0 2px var(--sector-tint-2);
+  transition: background-color .5s var(--ease), color .5s var(--ease), box-shadow .5s var(--ease), transform .5s var(--ease);
+  z-index: 1;
+}
+.fase.is-active .fase-mark { background: var(--sector); color: #fff; box-shadow: 0 0 0 6px var(--sector-tint); transform: scale(1.06); }
+
+.traject-lijn { position: absolute; overflow: visible; z-index: 0; }
+.traject-lijn-h { display: none; }
+.traject-lijn-v { display: block; left: 2px; top: 22px; width: 40px; height: calc(100% - 44px); }
+.lijn-bg { fill: none; stroke: var(--sector-tint-2); stroke-width: 2.5; }
+.lijn-fg { fill: none; stroke: var(--sector); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s var(--ease); }
+.traject.is-drawn .lijn-fg { stroke-dashoffset: 0; }
+
+/* 6. Specialisaties */
+.specs { margin-top: var(--section); }
+.spec-grid {
+  list-style: none; margin: 40px 0 0; padding: 0;
+  display: grid; grid-template-columns: 1fr; gap: 12px;
+}
+.spec-grid li {
+  display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: start;
+  padding: 22px 0; border-top: 1px solid var(--line);
+}
+.spec-grid li:last-child { border-bottom: 1px solid var(--line); }
+.spec-icon { width: 48px; height: 48px; fill: none; stroke: var(--sector); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.spec-grid h3 { margin-top: 2px; }
+.spec-grid p { margin-top: 6px; color: var(--ink-2); grid-column: 2; }
+.spec-grid li > * { grid-column: 2; }
+.spec-grid li > .spec-icon { grid-column: 1; grid-row: 1 / span 2; }
+
+/* 7. Team */
+.team { margin-top: var(--section); }
+.team-intro { max-width: var(--measure); }
+.team-intro p { margin-top: 14px; color: var(--ink-2); font-size: 18px; }
+.people { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 28px; }
+.people li {
+  display: grid; grid-template-columns: 1fr; gap: 18px;
+  background: var(--paper-2); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-soft);
+}
+.portrait {
+  aspect-ratio: 1 / 1; border-radius: 50%; width: 120px; background: var(--sector-tint);
+  display: grid; place-items: center; color: var(--sector-deep); font-size: 13px; font-weight: 500; text-align: center;
+  border: 1px dashed var(--sector-tint-2);
+}
+.role { color: var(--sector-deep); font-weight: 600; font-size: 15px; margin-top: 4px; }
+.person-text p:last-child { margin-top: 10px; color: var(--ink-2); }
+
+/* 8. Praktisch: weekbalken + strip */
+.praktisch { margin-top: var(--section); }
+.week { margin-top: 36px; display: grid; gap: 10px; font-variant-numeric: tabular-nums; }
+.week-scale { display: grid; grid-template-columns: 44px 1fr 110px; }
+.week-scale span { grid-column: 2; display: none; }
+.dag { display: grid; grid-template-columns: 44px 1fr 110px; align-items: center; gap: 12px; }
+.dag-naam { font-weight: 600; color: var(--ink-2); }
+.dag-track { position: relative; height: 14px; border-radius: 7px; background: var(--paper-3); overflow: hidden; }
+.dag-bar {
+  position: absolute; top: 0; bottom: 0;
+  left: calc(var(--from) / 12 * 100%); width: calc((var(--to) - var(--from)) / 12 * 100%);
+  background: var(--sector); border-radius: 7px;
+  transform-origin: left center; transform: scaleX(0); transition: transform .9s var(--ease);
+}
+.week.is-in .dag-bar { transform: scaleX(1); }
+.dag-uren { text-align: right; font-size: 15px; color: var(--ink-2); }
+.dag.is-closed .dag-uren { color: var(--ink-3); }
+.strip { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 22px; }
+.strip li { display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; }
+.strip svg { width: 28px; height: 28px; fill: none; stroke: var(--sector); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+.strip strong { display: block; font-weight: 600; }
+.strip span { display: block; color: var(--ink-2); margin-top: 4px; }
+
+/* 9. Tarieven */
+.tarieven { margin-top: var(--section); }
+.tarieven-card { background: var(--sector); color: #fff; border-radius: 24px; padding: clamp(28px, 5vw, 56px); }
+.tarieven-card h2 { color: #fff; }
+.tarieven-card h3 { color: #fff; font-size: 19px; }
+.tarieven-grid { margin-top: 32px; display: grid; grid-template-columns: 1fr; gap: 24px; }
+.tarieven-grid p { margin-top: 8px; color: #fff; }
+
+/* 10. Goed om te weten: open vraag en antwoord, geen accordeon */
+.faq { margin-top: var(--section); }
+.qa { margin: 36px 0 0; display: grid; gap: 36px; }
+.qa-item { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.qa dt { font-weight: 600; font-size: 19px; letter-spacing: -.01em; line-height: 1.3; }
+.qa dd { margin: 0; color: var(--ink-2); max-width: 58ch; }
+
+/* 11. Contact: bellen eerst, terugbelverzoek daarna */
+.contact { margin-top: var(--section); display: grid; grid-template-columns: 1fr; gap: 40px; }
+.bel h2 { max-width: 16ch; }
+.bel-nummer {
+  display: inline-block; margin-top: 22px; text-decoration: none;
+  font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -.03em; line-height: 1; color: var(--accent-deep);
+  font-variant-numeric: tabular-nums;
+}
+.bel-nummer:hover { color: #8F5039; }
+.bel-uren { margin-top: 18px; color: var(--ink-2); max-width: 40ch; }
+.bel-mail { margin-top: 12px; color: var(--ink-2); }
+.terugbel { background: var(--paper-2); border-radius: var(--radius); padding: 28px; display: grid; gap: 18px; box-shadow: var(--shadow-soft); }
+.terugbel h3 { font-size: 22px; }
+.terugbel-intro { color: var(--ink-2); margin-top: -8px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.field { display: grid; gap: 8px; }
+label { font-weight: 600; font-size: 15px; }
+input[type="text"], input[type="tel"], input[type="email"], textarea {
+  font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line-strong);
+  border-radius: 12px; padding: 12px 14px; width: 100%;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background-color .2s var(--ease);
+}
+input::placeholder, textarea::placeholder { color: #666C62; }
+input:focus, textarea:focus { outline: none; background: #fff; border-color: var(--sector); box-shadow: 0 0 0 4px rgba(91,122,99,.18); }
+input:user-invalid { border-color: #b3261e; }
+textarea { resize: vertical; min-height: 88px; }
+.field-row { display: grid; grid-template-columns: 1fr; gap: 18px; }
+.optional { font-weight: 400; color: var(--ink-3); margin-left: 6px; }
+.chips { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips legend { font-weight: 600; font-size: 15px; padding: 0; margin-bottom: 10px; float: left; width: 100%; }
+.chips label { position: relative; }
+.chips input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chips span {
+  display: inline-block; padding: 8px 14px; border-radius: var(--pill); font-weight: 500; font-size: 15px;
+  background: var(--paper); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line-strong); cursor: pointer;
+  transition: background-color .2s var(--ease), color .2s var(--ease), box-shadow .2s var(--ease);
+}
+.chips input:checked + span { background: var(--sector); color: #fff; box-shadow: none; }
+.chips input:focus-visible + span { outline: 3px solid var(--accent-deep); outline-offset: 2px; }
+.form-note { color: var(--ink-3); font-size: 14px; text-align: center; }
+
+/* 12. Voettekst met gebogen scheiding */
+.foot { max-width: 1120px; margin: var(--section) auto 0; padding: 0 var(--gutter) 40px; color: var(--ink-2); font-size: 15px; }
+.foot-curve { width: 100%; height: 28px; }
+.foot-curve path { fill: none; stroke: var(--sector-tint-2); stroke-width: 2; }
+.foot-row { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
+.foot-demo { color: var(--ink-3); }
+
+/* 13. Scroll-reveal (alleen met JS, één keer) */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+.js .week.reveal { transform: none; }
+
+/* 14. Breekpunten */
+@media (min-width: 640px) {
+  .people li { grid-template-columns: 120px 1fr; gap: 24px; align-items: start; }
+  .field-row { grid-template-columns: 1fr 1fr; }
+  .spec-grid { grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 0; }
+  .spec-grid li:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+  .tarieven-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .strip { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .week-scale span { display: block; font-size: 13px; color: var(--ink-3); }
+  .week-scale { grid-template-columns: 44px 1fr 110px; gap: 12px; }
+  .week-scale span:nth-child(1) { grid-column: 2; justify-self: start; }
+  .week-scale span:nth-child(2) { grid-column: 2; justify-self: center; grid-row: 1; }
+  .week-scale span:nth-child(3) { grid-column: 2; justify-self: end; grid-row: 1; }
+  .qa-item { grid-template-columns: minmax(220px, 1fr) 2fr; gap: 32px; }
+  .foot-row { grid-template-columns: 1fr 1fr; }
+  .foot-demo { text-align: right; }
+}
+@media (min-width: 900px) {
+  .topnav { display: flex; }
+  .btn-call { display: none; }
+  .contact { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+  .terugbel { padding: 36px; }
+  .spec-grid { grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
+  .spec-grid li:nth-last-child(3) { border-bottom: 1px solid var(--line); }
+
+  /* Tijdlijn horizontaal: markers op één lijn, gebogen lijn erboven */
+  .traject { padding-top: 64px; }
+  .fases { grid-template-columns: repeat(3, 1fr); gap: 40px; padding-left: 0; }
+  .fase { padding-top: 0; }
+  .fase-mark { left: 0; top: -64px; }
+  .traject-lijn-v { display: none; }
+  .traject-lijn-h {
+    display: block; left: 22px; top: 22px; height: 40px;
+    width: calc(2 * ((100% - 80px) / 3 + 40px));
+  }
+}
+@media (max-width: 639px) {
+  .actions .btn { flex: 1 1 100%; }
+  .btn-top { display: none; }
+  .terugbel { padding: 22px; }
+}
+@media (min-width: 640px) and (max-width: 899px) {
+  .btn-top { display: inline-flex; }
+  .btn-call { display: none; }
+}
+
+/* 15. Beweging uit voor wie dat vraagt */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+  .lijn-fg { stroke-dashoffset: 0 !important; }
+  .dag-bar { transform: none !important; }
+}
