@@ -8,6 +8,59 @@ Werkwijze: log in → ga naar de site → klik rechtsboven op **Bewerken**. Klik
 
 ---
 
+## Alternatief: nieuwe site in plaats van Odoo opkuisen
+
+Naast deze to-do is er ook een volledig nieuwe demo gebouwd als alternatief: `klanten/santa-lucia-site/`
+(warm mediterraan ontwerp, geen Odoo-templatetekst, alle ontbrekende gegevens duidelijk gemarkeerd
+als placeholder). Vergelijking:
+
+| | Odoo-site (nu) | Nieuwe demo-site |
+|---|---|---|
+| Telefoon/e-mail | fout gekoppeld (Amerikaans nepnummer, example.com) | placeholder, duidelijk gemarkeerd, klaar om in te vullen |
+| Reviews | nep ("Jane DOE") | geen — pas invullen met echte |
+| Valuta | door elkaar $/€ | consequent € |
+| Privacy | pagina leeg | nog toe te voegen, maar geen fake content die klaar lijkt |
+| Navigatie | kapotte footerlinks, dubbele "Volg ons" | werkende single-scroll structuur, sticky reserveerknop |
+| Uitstraling | generiek Odoo-template | eigen ontwerp, herkenbaar als Santa Lucia |
+| Marina kan zelf bewerken? | ja, met de Odoo-editor | nee, zonder extra CMS (zie hieronder) |
+
+### CMS-opties voor de nieuwe site
+
+De nieuwe site is statische HTML op GitHub Pages (dezelfde stack als alle TimmersDesign-demo's).
+Snel, gratis te hosten, mooi — maar Marina kan er zelf niets in aanpassen zonder de code te
+bewerken, in tegenstelling tot Odoo. Drie manieren om dat op te lossen:
+
+**Optie 1 — Geen CMS: Davy blijft de editor**
+Marina belt/mailt een wijziging, Davy past de HTML aan en pusht.
+- ✅ Simpelst, past in de bestaande workflow en het prijsmodel: meerwerk €55/u, of een klein
+  onderhoudspakket (bv. €25/maand voor tot 2 wijzigingen).
+- ❌ Marina is voor elke kleine aanpassing afhankelijk van Davy.
+- Past bij: klanten die zelden iets wijzigen (menu verandert 1–2×/jaar).
+
+**Optie 2 — Git-based CMS (Decap CMS, gratis)**
+Een `/admin`-pagina op dezelfde statische site. Marina logt in, past tekst/prijzen aan via een
+formulier, de wijziging wordt automatisch naar GitHub gepusht. Blijft 100% de huidige stack
+(statisch, GitHub Pages, geen server).
+- ✅ Marina kan zelf menukaart, uren en teksten aanpassen zonder Davy.
+- ✅ Gratis, geen extra hosting. Eenmalig ±1–2 uur extra bouwwerk per klant, daarna onderhoudsvrij.
+- ❌ Minder gebruiksvriendelijk dan Odoo's drag-and-drop editor.
+- ❌ Grote structurele wijzigingen (nieuwe sectie, andere lay-out) kan Marina nog steeds niet zelf.
+- Past bij: klanten die regelmatig kleine dingen aanpassen (prijzen, uren, dagmenu).
+
+**Optie 3 — Google Sheet als mini-CMS (alleen voor de menukaart)**
+Marina houdt de kaart bij in een gewone Google Sheet; een stukje JavaScript op de site haalt die
+gegevens automatisch op.
+- ✅ Extreem laagdrempelig, iedereen kent Sheets. Zeer weinig bouwwerk (een halfuurtje).
+- ❌ Werkt alleen voor de menukaart, niet voor de rest van de tekst.
+- Past bij: als vooral de kaart/prijzen wijzigen — vaak net het geval bij een brasserie.
+
+**Advies voor Santa Lucia:** optie 3 (Google Sheet) voor de menukaart — laagdrempelig, snel
+gebouwd, Marina kent Sheets al — gecombineerd met optie 1 voor de rest (teksten, foto's, uren),
+via meerwerk aan €55/u. Dat geeft haar controle waar het ertoe doet, zonder de volledige
+Decap-CMS-opzet te bouwen en onderhouden voor iets wat ze misschien twee keer per jaar gebruikt.
+
+---
+
 ## Bevindingen (volledige lijst)
 
 ### 🔴 Placeholder- of fout-inhoud
