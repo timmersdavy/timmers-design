@@ -48,33 +48,35 @@
       <p>Een voorbeeldselectie — de volledige kaart volgt zodra Santa Lucia de definitieve gerechten en prijzen doorgeeft.</p>
     </div>
 
-    <div class="menu-grid">
+    <p class="menu-status" data-menu-status></p>
+
+    <div class="menu-grid" id="menu-grid" data-menu-sheet-id="1Mi-yDOgj87VijS2NBZgSMqzhhzT-j9Xs1pTizm9Av1Q">
       <div class="menu-cat reveal">
         <h3>Voorgerechten <span class="voorbeeld-tag">voorbeeld</span></h3>
         <ul class="menu-list">
-          <li><span class="naam">[Voorgerecht 1]</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 0,00</span></li>
-          <li><span class="naam">[Voorgerecht 2]</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 0,00</span></li>
+          <li><div class="menu-item-rij"><span class="naam">[Voorgerecht 1]</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 0,00</span></div></li>
+          <li><div class="menu-item-rij"><span class="naam">[Voorgerecht 2]</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 0,00</span></div></li>
         </ul>
       </div>
       <div class="menu-cat reveal">
         <h3>Hoofdgerechten <span class="voorbeeld-tag">voorbeeld</span></h3>
         <ul class="menu-list">
-          <li><span class="naam">[Hoofdgerecht 1]</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 0,00</span></li>
-          <li><span class="naam">[Hoofdgerecht 2]</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 0,00</span></li>
+          <li><div class="menu-item-rij"><span class="naam">[Hoofdgerecht 1]</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 0,00</span></div></li>
+          <li><div class="menu-item-rij"><span class="naam">[Hoofdgerecht 2]</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 0,00</span></div></li>
         </ul>
       </div>
       <div class="menu-cat reveal">
         <h3>Aperitief &amp; dranken <span class="voorbeeld-tag">voorbeeld</span></h3>
         <ul class="menu-list">
-          <li><span class="naam">Aperitief van het huis</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 8,50</span></li>
-          <li><span class="naam">Cappuccino</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 3,80</span></li>
-          <li><span class="naam">Huiswijn (glas)</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 5,50</span></li>
+          <li><div class="menu-item-rij"><span class="naam">Aperitief van het huis</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 8,50</span></div></li>
+          <li><div class="menu-item-rij"><span class="naam">Cappuccino</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 3,80</span></div></li>
+          <li><div class="menu-item-rij"><span class="naam">Huiswijn (glas)</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 5,50</span></div></li>
         </ul>
       </div>
       <div class="menu-cat reveal">
         <h3>Desserts <span class="voorbeeld-tag">voorbeeld</span></h3>
         <ul class="menu-list">
-          <li><span class="naam">[Dessert 1]</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 0,00</span></li>
+          <li><div class="menu-item-rij"><span class="naam">[Dessert 1]</span><span class="lijn" aria-hidden="true"></span><span class="prijs">€ 0,00</span></div></li>
         </ul>
       </div>
     </div>
@@ -197,6 +199,7 @@
   <a class="btn btn-primary btn-wide" href="#contact">Reserveer een tafel</a>
 </div>
 
+<script src="menu-sheet.js" defer></script>
 <script src="main.js" defer></script>
 </body>
 </html>

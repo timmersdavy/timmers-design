@@ -114,11 +114,13 @@ main > section { padding-inline: var(--gutter); max-width: 1120px; margin-inline
   font-family: var(--font); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
   color: var(--accent-deep); background: var(--sector-tint); padding: 3px 9px; border-radius: var(--pill);
 }
-.menu-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 12px; }
-.menu-list li { display: flex; align-items: baseline; gap: 8px; }
+.menu-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 14px; }
+.menu-item-rij { display: flex; align-items: baseline; gap: 8px; }
 .naam { font-size: 16px; }
 .lijn { flex: 1; border-bottom: 1px dotted var(--line-strong); height: 1px; margin-bottom: 4px; }
 .prijs { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink-2); }
+.menu-beschrijving { margin-top: 4px; font-size: 14px; color: var(--ink-3); }
+.menu-status { margin-top: 12px; font-size: 13px; color: var(--ink-3); }
 
 /* 7. Sfeer */
 .sfeer { display: grid; grid-template-columns: 1fr; gap: 40px; }
