@@ -1,0 +1,207 @@
+/* ============================================================
+   Brasserie Santa Lucia · demo-ontwerp door TimmersDesign
+   Warm mediterraan: terracotta, crème, goud. Fraunces (display) + Inter (body).
+   Hero-type: editorial (eyebrow + serifkop + praktische info direct eronder).
+   Navigatie: geen topbar — single-scroll met sticky CTA-balk onderaan.
+   ============================================================ */
+
+/* 1. Tokens */
+:root {
+  --sector: #9A3324;
+  --sector-deep: #6F2116;
+  --sector-tint: #F3E3DA;
+  --sector-tint-2: #E6C6B6;
+  --accent: #C9982E;
+  --accent-deep: #A67B22;
+  --ink: #2B211B;
+  --ink-2: #5B4C42;
+  --ink-3: #7A6A5E;
+  --paper: #F6EAD6;
+  --paper-2: #FFFCF6;
+  --paper-3: #EEDCC0;
+  --line: rgba(43, 33, 27, .12);
+  --line-strong: rgba(43, 33, 27, .24);
+  --shadow-soft: 0 10px 30px rgba(43, 33, 27, .10), 0 2px 6px rgba(43, 33, 27, .05);
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --measure: 62ch;
+  --gutter: clamp(20px, 5vw, 64px);
+  --section: clamp(72px, 10vw, 136px);
+  --radius: 16px;
+  --pill: 980px;
+}
+
+/* 2. Reset en browser-oppervlakken */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 84px; /* ruimte voor sticky CTA op mobiel */
+}
+::selection { background: var(--sector-tint-2); color: var(--sector-deep); }
+:focus-visible { outline: 3px solid var(--accent-deep); outline-offset: 3px; border-radius: 8px; }
+a { color: var(--sector-deep); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+a:hover { color: var(--ink); }
+h1, h2, h3 { margin: 0; text-wrap: balance; font-family: var(--font-display); }
+h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 500; letter-spacing: -.01em; line-height: 1.1; }
+h3 { font-size: 21px; font-weight: 500; letter-spacing: -.005em; line-height: 1.25; font-family: var(--font); }
+p { margin: 0; }
+p + p { margin-top: .75em; }
+img, svg { display: block; }
+.skip { position: absolute; left: 16px; top: -60px; padding: 10px 14px; background: var(--ink); color: #fff; border-radius: 8px; z-index: 60; text-decoration: none; }
+.skip:focus { top: 16px; }
+
+main > section { padding-inline: var(--gutter); max-width: 1120px; margin-inline: auto; padding-block: var(--section); }
+.section-head { max-width: var(--measure); }
+.section-head p { margin-top: 14px; color: var(--ink-2); font-size: 18px; }
+
+/* 3. Proefbanner: duidelijk gemarkeerd als intern werkdocument, geen productie-UI */
+.proefbanner {
+  background: var(--ink);
+  color: var(--paper-2);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 12px var(--gutter);
+  text-align: center;
+}
+.proefbanner strong { color: var(--accent); }
+
+/* 4. Knoppen */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 22px; border-radius: var(--pill);
+  font-weight: 600; font-size: 17px; text-decoration: none; border: 0; cursor: pointer; font-family: var(--font);
+  transition: background-color .25s var(--ease), color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.btn-primary { background: var(--sector-deep); color: var(--paper-2); }
+.btn-primary:hover { background: var(--sector); color: #fff; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(111,33,22,.30); }
+.btn-primary:active { transform: none; box-shadow: none; }
+.btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.btn-ghost:hover { background: var(--paper-2); color: var(--ink); }
+.btn-wide { width: 100%; }
+
+/* 5. Hero editorial */
+.hero { padding-block: clamp(56px, 10vw, 120px) var(--section); }
+.eyebrow {
+  display: inline-block; font-family: var(--font); font-weight: 600; font-size: 13px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent-deep);
+}
+.hero h1 { font-size: clamp(48px, 9vw, 96px); font-weight: 500; letter-spacing: -.01em; line-height: .98; margin-top: 10px; color: var(--sector-deep); }
+.lede { font-size: clamp(18px, 1.6vw, 21px); line-height: 1.5; color: var(--ink-2); margin-top: 22px; max-width: 58ch; font-family: var(--font); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+.hero-praktisch {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px 32px; margin: clamp(40px, 6vw, 64px) 0 0; padding-top: 28px;
+  border-top: 1px solid var(--line-strong);
+}
+.hero-praktisch dt { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.hero-praktisch dd { margin: 6px 0 0; font-size: 16px; color: var(--ink); }
+
+/* 6. Menukaart */
+.menu { background: var(--paper-2); border-radius: var(--radius); }
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px 48px; margin-top: 48px; }
+.menu-cat h3 { display: flex; align-items: baseline; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--sector-tint-2); color: var(--sector-deep); }
+.voorbeeld-tag {
+  font-family: var(--font); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--accent-deep); background: var(--sector-tint); padding: 3px 9px; border-radius: var(--pill);
+}
+.menu-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 12px; }
+.menu-list li { display: flex; align-items: baseline; gap: 8px; }
+.naam { font-size: 16px; }
+.lijn { flex: 1; border-bottom: 1px dotted var(--line-strong); height: 1px; margin-bottom: 4px; }
+.prijs { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink-2); }
+
+/* 7. Sfeer */
+.sfeer { display: grid; grid-template-columns: 1fr; gap: 40px; }
+.sfeer-tekst p { margin-top: 14px; color: var(--ink-2); max-width: var(--measure); font-size: 18px; }
+.sfeer-vlakken { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.vlak {
+  aspect-ratio: 4 / 5; border-radius: var(--radius); display: grid; place-items: center;
+  color: var(--sector-deep); font-weight: 600; font-size: 14px; text-align: center;
+  background: linear-gradient(155deg, var(--sector-tint), var(--paper-3));
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.vlak-2 { background: linear-gradient(155deg, var(--paper-3), var(--sector-tint-2)); }
+.vlak-3 { background: linear-gradient(155deg, var(--sector-tint-2), var(--paper-2)); }
+
+/* 8. Praktisch strip */
+.strip { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+.strip li { display: flex; gap: 16px; align-items: flex-start; }
+.strip svg { width: 28px; height: 28px; flex: none; color: var(--sector-deep); fill: none; stroke: currentColor; stroke-width: 1.8; }
+.strip strong { display: block; font-size: 17px; }
+.strip span { display: block; color: var(--ink-2); margin-top: 4px; font-size: 15px; }
+
+/* 9. FAQ */
+.qa { margin: 40px 0 0; display: grid; gap: 20px; }
+.qa-item { border-top: 1px solid var(--line); padding-top: 20px; }
+.qa-item dt { font-weight: 600; font-size: 17px; font-family: var(--font); }
+.qa-item dd { margin: 8px 0 0; color: var(--ink-2); }
+
+/* 10. Contact */
+.contact { display: grid; grid-template-columns: 1fr; gap: 40px; }
+.bel { background: var(--sector-deep); color: var(--paper-2); border-radius: var(--radius); padding: clamp(32px, 5vw, 56px); }
+.bel h2 { color: var(--paper-2); }
+.bel-nummer { display: inline-block; margin-top: 18px; font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); color: #fff; text-decoration: none; }
+.bel-uren { margin-top: 14px; color: var(--sector-tint-2); }
+.bel-mail { margin-top: 8px; }
+.bel-mail a { color: #fff; }
+
+.reservatie {
+  background: var(--paper-2); border-radius: var(--radius); padding: clamp(28px, 4vw, 44px);
+  box-shadow: var(--shadow-soft); display: grid; gap: 16px;
+}
+.reservatie-intro { color: var(--ink-2); margin-top: -6px; }
+.field { display: grid; gap: 6px; }
+.field label { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.field input, .field textarea {
+  font: inherit; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line-strong);
+  background: #fff; color: var(--ink);
+}
+.field input:focus, .field textarea:focus { outline: 3px solid var(--accent-deep); outline-offset: 1px; border-color: var(--accent-deep); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.optional { font-weight: 400; color: var(--ink-3); }
+.hp { position: absolute; left: -9999px; }
+.form-note { font-size: 13px; color: var(--ink-3); margin-top: -4px; }
+
+/* 11. Footer */
+.foot { padding: 40px var(--gutter) 32px; border-top: 1px solid var(--line); }
+.foot-row { max-width: 1120px; margin-inline: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+.foot p { color: var(--ink-2); font-size: 14px; }
+.foot-demo { max-width: 40ch; }
+
+/* 12. Sticky CTA-balk (enkel navigatie-element van de site) */
+.sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  padding: 12px var(--gutter);
+  background: rgba(246, 234, 214, .92);
+  -webkit-backdrop-filter: saturate(180%) blur(14px); backdrop-filter: saturate(180%) blur(14px);
+  border-top: 1px solid var(--line-strong);
+}
+.sticky-cta .btn { max-width: 420px; margin-inline: auto; }
+
+/* 13. Scroll-reveal */
+.reveal { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* 14. Responsief */
+@media (min-width: 720px) {
+  .sfeer { grid-template-columns: 1fr 1.1fr; align-items: center; }
+  .contact { grid-template-columns: 1fr 1.1fr; }
+}
+@media (max-width: 480px) {
+  .field-row { grid-template-columns: 1fr; }
+}
