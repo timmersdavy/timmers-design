@@ -8,6 +8,51 @@ Werkwijze: log in → ga naar de site → klik rechtsboven op **Bewerken**. Klik
 
 ---
 
+## Bevindingen (volledige lijst)
+
+### 🔴 Placeholder- of fout-inhoud
+
+1. Telefoonnummer bovenaan: `+1 555-555-5556`, een Amerikaans nepnummer.
+2. Telefoon in de footer: staat `+32 3 555 55 56`, maar de link belt nog `tel:+1 555-555-5556`.
+3. E-mail in de footer: staat `info@brasseriesantalucia.be`, maar de link gaat naar `info@yourcompany.example.com`.
+4. Reviews: "Jane DOE – CEO van MijnBedrijf" en "John DOE – CCO van MijnBedrijf" zijn demo-reviews.
+5. Derde review: "Iris De Smet – Zaakvoerder van Santa Lucia". Een review van de eigen zaakvoerder is niet geloofwaardig.
+6. Valuta door elkaar: Cappuccino `$4.20`, thee `$3.50` / `$3.00`, huiswijn `$5.50`. De rest staat in €.
+7. Omschrijvingen kloppen niet: "Jasmijn groene thee" wordt omschreven als *witte wijn*, en "Huiswijn" als *kamillethee*.
+8. Wijnsectie: titel is "Ontdek onze wijnen", maar er staan geen wijnen onder.
+9. Contactpagina, route: routebeschrijvingen naar *San Francisco* (BART, US-101, Executive Park Blvd).
+10. Contactpagina, kaart: "Er moet een adres worden opgegeven om een kaart weer te geven". Geen adres ingevuld.
+11. Contactpagina, tekst: "Meer dan 50.000 bedrijven maken gebruik van onze diensten" is demotekst.
+12. FAQ op de contactpagina: generieke Odoo-tekst ("24/7 live chat", "partners", enzovoort), past niet bij een brasserie.
+13. Privacybeleid: de pagina is **leeg**, alleen de titel staat er. GDPR-probleem.
+14. Copyright: "Copyright (C) TimmersDesign" in plaats van Santa Lucia.
+15. Logo: TimmersDesign-logo in plaats van dat van Santa Lucia.
+
+### 🟠 Navigatie en structuur
+
+16. Hoofdmenu: alleen "Startpagina". Menukaart, Over ons en Reserveren ontbreken.
+17. Footerlinks zonder pagina: "Over ons", "Menukaart", "Diensten" en "Contact & info" zijn geen links.
+18. "Diensten" past niet bij een restaurant.
+19. Social icons onder "Volg ons" linken nergens naartoe; de kop "Volg ons" staat twee keer.
+20. "Aanmelden" in de header: bezoekers hebben geen login nodig, moet weg.
+21. Reserveren: "Reserveer een tafel" gaat naar een algemeen contactformulier, geen echte reservatiemodule.
+22. Contactformulier: velden "Bedrijf" en "Onderwerp" zijn overbodig voor een reservatie.
+
+### 🟡 Nog te checken of ontbrekende info
+
+23. Stockfoto's: alle beelden komen uit de Odoo-bibliotheek, geen eigen foto's.
+24. Openingsuren staan nergens.
+25. Adres staat nergens, ook niet voor Google Maps.
+26. Menukaart: maar 3 gerechten plus 3 thee/wijn als voorbeeld, echte kaart ontbreekt.
+27. Toegankelijkheid: niets over rolstoeltoegankelijkheid of parking.
+28. Footer-branding: "Aangeboden door Odoo – Maak een gratis website" staat er nog.
+29. Domein: draait nog op `timmersdesign1.odoo.com`, geen eigen domein.
+30. Kop "Een culinaire reis vol smaak en charme" is generieke tekst.
+
+Niet gecontroleerd: meta-title en -description, alt-teksten, favicon, cookiebanner, mobiele weergave en laadsnelheid (technische scan liep vast op timeout). Kassa en facturatie zitten in de backend, niet gecontroleerd zonder login.
+
+---
+
 ## Stap 0 — Eerst opvragen bij Marina
 
 Zonder deze info kun je de site niet afwerken:
