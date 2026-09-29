@@ -19,6 +19,7 @@ Mijn bedrijf: Timmers Design (timmersdesign.be).
 - doelen.md — korte- en langetermijndoelen
 - NOW.md — wat er deze week/maand loopt
 - rules.md — vaste werkregels
+- website-checklist.md — kwaliteitspunten waaraan elke klantensite of demo moet voldoen (uit de Santa Lucia-audit)
 - TOOLS.md — welke tools/automatisaties ik gebruik
 - memory/MEMORY.md — lopende feiten en beslissingen die evolueren
 - projects/<naam>/context.md — per-project details

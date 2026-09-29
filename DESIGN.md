@@ -88,6 +88,7 @@ Twee demo's mogen niet dezelfde hero-type + navigatie + sectievolgorde delen.
 |------|--------|-----------|-----------|----------------|-------------------|
 | `demos/tandarts-helder` | Tandarts | 2 · split, CSS-art object (interactief gebit, FDI) | Zwevende pill onderaan | Hero · Praktisch · Behandelingen · Eerste afspraak · Team · FAQ · Contact (geen Reviews, geen Tarieven) | Odontogram: hover/tik op een tand toont de behandeling. Teal #0E7C7B, Bricolage Grotesque |
 | `demos/kine-veerkracht` | Kinesitherapeut | 7 · verticale/horizontale tijdlijn als hero (traject intake → behandeling → herstel, scroll-gestuurd) | Klassieke sticky topbar met blur | Hero(tijdlijn) · Specialisaties · Team · Praktisch · Tarieven & terugbetaling · FAQ · Contact (geen apart stappen-blok, geen Reviews) | Gebogen SVG-lijn die zich tekent bij scroll; fases lichten op. Salie #5B7A63, terracotta #C97C5D, zand-canvas, Figtree |
+| `demos/kapper-salon-sabrina` | Kapper | 6 · bento-grid boven de vouw (tegels: intro, uren, adres, diensten, socials, CTA) | Geen nav: single-scroll met sticky CTA-balk onderaan | Hero(bento) · Praktisch · Diensten · Contact (geen Team, geen Reviews, geen FAQ) | Bento-tegels die bij hover/tik oplichten; pruim #6B2E45, blush-canvas, goud-accent, Fraunces |
 
 ### Keuzemenu hero-types
 1. Full-bleed typografisch statement, één regel, geen visual.
