@@ -7,6 +7,7 @@
   <meta name="description" content="Voorbeeld van de homepage van Timmers Design in een rustige, ruime stijl.">
   <title>Timmers Design - voorbeeld in rustige stijl</title>
   <link rel="stylesheet" href="css/apple.css">
+  <script>if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <a class="skip" href="#main">Naar de inhoud</a>
@@ -17,23 +18,26 @@
         <li><a href="services.html">Services</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a class="nav-cta" href="contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
 
   <main id="main">
     <header class="hero">
-      <p class="eyebrow">Webdesign uit Limburg</p>
       <h1>Websites die er goed uitzien en werken.</h1>
       <p>Design en development voor ambitieuze Belgische bedrijven.</p>
       <a class="knop" href="contact.html">Start je project</a>
+      <svg class="groei" viewBox="0 0 600 120" aria-hidden="true" focusable="false">
+        <polyline pathLength="1" points="4,108 120,108 200,66 290,84 390,34 470,22 560,10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="punt" cx="560" cy="10" r="6" fill="currentColor"/>
+      </svg>
     </header>
 
     <section class="grijs" aria-labelledby="wat">
       <div class="in">
-        <h2 id="wat" class="reveal">Wat we doen.</h2>
-        <p class="sub reveal">Drie dingen, goed gedaan.</p>
+        <h2 id="wat">Wat we doen.</h2>
+        <p class="sub">Drie dingen, goed gedaan.</p>
         <div class="rijen">
           <div class="rij reveal"><h3>Web Design</h3><p>Mooie, gebruiksvriendelijke interfaces die je doelgroep aanspreken. Elke pixel telt.</p></div>
           <div class="rij reveal"><h3>Development</h3><p>Snelle, schaalbare websites met de nieuwste technologie. Niet alleen mooi, maar ook sterk.</p></div>
@@ -44,18 +48,18 @@
 
     <section aria-labelledby="werk">
       <div class="in">
-        <h2 id="werk" class="reveal">Recent werk.</h2>
+        <h2 id="werk">Recent werk.</h2>
         <div class="tegels">
-          <article class="tegel reveal"><small>Social Media</small><h3>DaDenk</h3><p>Een Vlaamse humorkrant met dagelijkse content.</p><a class="link-pijl" href="portfolio.html">Bekijk project</a></article>
-          <article class="tegel reveal"><small>Business site</small><h3>Klus &amp; Tuin Wim</h3><p>Portfolio-site voor een lokale ondernemer.</p><a class="link-pijl" href="portfolio.html">Bekijk project</a></article>
-          <article class="tegel reveal"><small>Gids &amp; kaart</small><h3>Plons! Zwembaden</h3><p>Gids voor openbare zwembaden in Vlaanderen.</p><a class="link-pijl" href="portfolio.html">Bekijk project</a></article>
+          <article class="tegel reveal"><h3>DaDenk</h3><p>Een Vlaamse humorkrant met dagelijkse content. <span class="soort">Social Media.</span></p><a class="link-pijl" href="portfolio.html" aria-label="Bekijk project DaDenk">Bekijk project</a></article>
+          <article class="tegel reveal"><h3>Klus &amp; Tuin Wim</h3><p>Portfolio-site voor een lokale ondernemer. <span class="soort">Business site.</span></p><a class="link-pijl" href="portfolio.html" aria-label="Bekijk project Klus en Tuin Wim">Bekijk project</a></article>
+          <article class="tegel reveal"><h3>Plons! Zwembaden</h3><p>Gids voor openbare zwembaden in Vlaanderen. <span class="soort">Gids &amp; kaart.</span></p><a class="link-pijl" href="portfolio.html" aria-label="Bekijk project Plons! Zwembaden">Bekijk project</a></article>
         </div>
       </div>
     </section>
 
     <section class="grijs" aria-labelledby="reviews">
       <div class="in">
-        <h2 id="reviews" class="reveal">Wat klanten zeggen.</h2>
+        <h2 id="reviews">Wat klanten zeggen.</h2>
         <div class="citaten">
           <blockquote class="reveal"><p>Mooi en creatief design van onze roll-up banner voor een internationaal congres. Persoonlijke aanpak.</p><cite>Diana Grasso</cite></blockquote>
           <blockquote class="reveal"><p>Grondig met oog voor detail en altijd bereikbaar. Een webdesigner die echt meedenkt.</p><cite>Saartje</cite></blockquote>
@@ -65,9 +69,9 @@
 
     <section class="cta" aria-labelledby="cta">
       <div class="in">
-        <h2 id="cta" class="reveal">Klaar om samen te werken?</h2>
-        <p class="sub reveal">We helpen je een digitale aanwezigheid opbouwen die echt werkt.</p>
-        <a class="knop reveal" href="contact.html">Neem contact op</a>
+        <h2 id="cta">Klaar om samen te werken?</h2>
+        <p class="sub">We helpen je een digitale aanwezigheid opbouwen die echt werkt.</p>
+        <a class="knop" href="contact.html">Neem contact op</a>
       </div>
     </section>
   </main>
