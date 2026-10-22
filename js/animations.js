@@ -5,9 +5,21 @@
   'use strict';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Spotlight die de muis volgt op kaarten (alleen CSS-variabelen, ook zonder GSAP)
+  if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.strip-panel, .project-card').forEach(function (el) {
+      el.classList.add('has-spotlight');
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+
   if (reduceMotion || !window.gsap || !window.ScrollTrigger) return;
 
-  var revealTargets = '.section-title, .strip-panel, .project-card, .review, .faq-item, .process-step, .service-card';
+  var revealTargets = '.section-title p, .strip-panel, .project-card, .review, .faq-item, .process-step, .service-card';
 
   try {
     gsap.registerPlugin(ScrollTrigger);
@@ -36,6 +48,37 @@
         var len = line.getTotalLength();
         gsap.set(line, { strokeDasharray: len, strokeDashoffset: len });
         gsap.to(line, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut', delay: 0.7 });
+      }
+    }
+
+    // Titels: woord voor woord (React Bits "split text"-stijl)
+    gsap.utils.toArray('.section-title h2').forEach(function (h2) {
+      var label = h2.textContent.trim();
+      h2.setAttribute('aria-label', label);
+      h2.innerHTML = label.split(/\s+/).map(function (w) {
+        return '<span aria-hidden="true" style="display:inline-block;overflow:hidden;vertical-align:top"><span class="w" style="display:inline-block">' + w + '</span></span>';
+      }).join(' ');
+      gsap.from(h2.querySelectorAll('.w'), {
+        yPercent: 110, duration: 0.7, ease: 'power3.out', stagger: 0.08,
+        scrollTrigger: { trigger: h2, start: 'top 88%', once: true }
+      });
+    });
+
+    // Count-up voor de reviewscore ("5,0")
+    var score = document.querySelector('.reviews-score');
+    if (score) {
+      var raw = score.textContent;
+      var m = raw.match(/(\d+),(\d)/);
+      if (m) {
+        var target = parseFloat(m[1] + '.' + m[2]);
+        var o = { v: 0 };
+        score.setAttribute('aria-label', raw.trim());
+        gsap.to(o, {
+          v: target, duration: 1.4, ease: 'power2.out',
+          scrollTrigger: { trigger: score, start: 'top 90%', once: true },
+          onUpdate: function () { score.textContent = raw.replace(m[0], o.v.toFixed(1).replace('.', ',')); },
+          onComplete: function () { score.textContent = raw; }
+        });
       }
     }
 

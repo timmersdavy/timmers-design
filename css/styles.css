@@ -1315,3 +1315,12 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* Spotlight-hover op kaarten */
+.has-spotlight { position: relative; overflow: hidden; }
+.has-spotlight::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(242, 183, 5, 0.22), transparent 70%);
+  transition: opacity 0.25s ease;
+}
+.has-spotlight:hover::after { opacity: 1; }
